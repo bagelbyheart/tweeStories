@@ -20,22 +20,6 @@ Lux Arescentem
     font-family: monospace;
 }
 
-/*
-#page .fork p a {
-    color: red;
-    background: hsla(0, 100%, 98.03921568627452%, 1);
-    display: block;
-    flex-grow: 1;
-    text-align: center;
-    padding: .5em;
-}
-
-#page .fork a:hover {
-    background-color: #e6e6ff;
-    color: #1e1e3c;
-}
-*/
-
 #page {
   padding: 2em;
 }
@@ -46,12 +30,11 @@ Lux Arescentem
     display: block;
     flex-grow: 1;
     text-align: center;
+    text-transform: uppercase;
+    font-size: 100%;
+    letter-spacing: .075em;
+    font-family: monospace;    
     padding: .5em;
-}
-
-#page .fork a:hover {
-    color: red;
-    background: hsla(0, 100%, 98.03921568627452%, 1);
 }
 
 #page .fork a:hover {
@@ -88,6 +71,8 @@ ochreOpen: false
 ochreTwo: false
 ochreThreeSet: false
 ochreThree: false
+ochreThreeSet: false
+ochreThree: false
 ochreFail: false
 
 sapphiricSeen: false
@@ -105,283 +90,8 @@ A short narrative exploration.\
 By <a target="_blank" href="http://twitter.com/bagelbyheart">@bagelbyheart</a>
 [cont]
 
-> [[ochreDoor]] 
-
+> [["The Ochre Plinth"->ochreDoor]]
 > ~~[[Begin->serviceAlert]]~~
-
-
-:: wakingUp {"position":"2550,2400","size":"100,100"}
-A string somewhere inside your core vibrates, ~~"activating repair routines."~~ As it settles into a line once more, tiny bolts of lighting trace across your self; the rest of you coming alive.
-
-
-s it settles into a steady line once more, the rest of you comes alive, with tiny bolts of lightning tracing across your self (like busy bees).
-
-The first wave brings {reveal link: 'a sensation of discomfort', text: 'an image of a wide snowy expanse beneath a dark sky; in the distance a fire burns in the cover of a drift, resting under the fingers of a barren tree. You feel cold'}. 
-
-The second wave to pass brings {reveal link: 'a feeling of restriction.', text: "a memory of a little boy, shoving a box into a too-small a bag. The bag threadbare, pulling at its seams, the material of the box creaking under the strain. You have form, and borders."}
-
-The third wave is the most powerful yet, {reveal link: "the inside of you wrenches and somehow tries to escape.", text: "like trudging through something cold and viscous; things tear at your core and dig into your feet as you push forward, head held just above the foul smelling ichor. The smell is overwhelming."}
-
-{reveal link: 'Then...', passage: 'eyesOpen'}
-
-
-:: centerRoom {"position":"3700,2400","size":"100,100"}
-[if ochreSeen && sapphiricSeen && irresolutionSeen && neverSeen]
-<font color="red">~~You have seen all main content at this time.~~</font>
-[cont]
-
-Machinery whirs and drones, interrupted by the occasional hiss of steam, or beep from one of the four control consoles positioned around the room. Fog on the floor flows in eddies at your passage.
-
-Each is set before the door of artifact they monitor. Four meter high triangles of dark brushed metal frame interlocking pattern of gold and silver hexagons, each forming a different symbol in its center. Two along the West wall:
-
-> ~~[["The Ochre Plinth"->ochreDoor]]~~
-> ~~[["The Irresolution Engine"->irresolutionEngine]]~~
-
-And two along the East:
-
-> ~~[["The Sapphiric Matrix"->sapphiricDoor]]~~
-> ~~[["The Never Star"->neverStar]]~~
-
-[todo]
-ORIGINAL VERSION-mostly
-Each is set before the door of artifact they monitor. Two along the West wall:
-
-> ~~[["The Ochre Plinth"->ochreDoor]]~~
-> ~~[["The Sapphiric Matrix"->sapphiricDoor]]~~
-
-And two along the East:
-
-> ~~[["The Irresolution Engine"->irresolutionEngine]]~~
-> ~~[["The Never Star"->neverStar]]~~
-
-Each door is centered on the wall, huge and ornate. Four meter high triangles of dark brushed metal frame an interlocking pattern of gold and silver hexagons. Each door's pattern forms a different symbol in its center.
-
-> ~~[["Confluence to the North"->confluence]]~~
-> ~~[["Dissolution to the South"->dissolution]]~~
-[cont]
-
-
-:: eyesOpen {"position":"2550,2550","size":"100,100"}
-Then a single burning point flickers in the center of your mind. Wavering, solidifying, and finally expanding; washing away the inky black void.
-
-> ~~[["repair agent is now active."->motorTest]]~~
-
-
-:: ochreDoor {"position":"3300,2000","size":"100,100"}
-ochreSeen: true
-ochreVal (ochreTwo): 25
-ochreVal (ochreThree): 25
-ochreVal (ochreTwo && ochreThree): 50
-ochreVal (ochreTwo == false &! ochreThree): 0
---
-The interlocking panels on The Ochre Vault doors form a pentadecagon, a line dividing its top two thirds from its bottom, its upper portion decorated with a stylization of broken stones beneath a 7 pointed star. A light breeze flows from the wall, pushing back the fog.
-{reveal link: "And something tickles inside you.",
-        text: "_The image of a temple, draped in red flowers, towering above a golden plain, forms in your mind, as the scent of their pollen washes over you._"}
-
-The console to the left of the doorway beeps at regular intervals along with a flashing icon in the center of the screen. An entry crystal to its right glows blue, safe to enter.
-
-<font color="red">~~this route goes no further at this time~~</font>
-
-> ~~[[Review the console->ochreConsole]]~~
-> ~~[[Enter the doorway->ochreVault]]~~
-> ~~[[Examine something else->centerRoom]]~~
-
-
-:: sapphiricDoor {"position":"4100,2000","size":"100,100"}
-sapphiricSeen: true
---
-The interlocking panels on The Sapphiric Vault doors form a nonagon, six lines cut along it, shattering the symmetry of the form. As you draw closer, you hear static hiss coming from beyond it. Embossed in each fragment is a subtle mark of a world that was.
-{reveal link: "Your pointer hovers, almost touching the lowest shard.",
-     passage: "amberVision"}
-
-The console to the left of the doorway is completely dark. The entry crystal to its right glows dim red, emergency override required.
-
-<font color="red">~~this route goes no further at this time~~</font>
-
-> ~~[[Example the console->sapphiricConsole]]~~
-> ~~[[Override the doorway->sapphiricVault]]~~
-> ~~[[Examine something else->centerRoom]]~~
-
-
-:: irresolutionEngine {"position":"3300,2800","size":"100,100"}
-irresolutionSeen: true
---
-The panels of the doors to The Irresolution Engine's Valut form a tetradecagon,  in its center a purple-black void, a perfect circle 10cm across. Pulses flow from the door, each pulling tight the lines that bind you. 
-{reveal link: "The material of your shell groans.",
-     passage: "contradictoryVision"}
-
-The console to the left of the doorway beeps every ten seconds. Eight times. Then every five seconds three. Then ten and eight again. The entry crystal to its right glows orange, this place could never be trusted.
-
-<font color="red">~~this route goes no further at this time~~</font>
-
-> ~~[[Review the console->irresolutionConsole]]~~
-> ~~[[Enter the doorway->irresolutionVault]]~~
-> ~~[[Examine something else->centerRoom]]~~
-
-
-:: neverStar {"position":"4100,2800","size":"100,100"}
-neverSeen: true
---
-The doors to The Never Star's Rest come to form a 1m triangle in the center of the larger gateway, within that a 21 pointed star is centered, a perfect circle at rest within it. 
-{reveal link: "Something cold in your core strains.",
-        text: "Something cold in your core bursts out, as if trying to join its partner. _You remember standing atop a spire, above infinity, stretching down through creation and beyond. Vision locked onto the shimmering impossibility before you. Desperate need filling your self that was._"}
-
-The console to the left of the doorway glows blue, shifting diagrams and text in green and purple cycle along the display. The entry crystal to its right glows blue, safe to enter.
-
-<font color="red">~~this route goes no further at this time~~</font>
-
-> ~~[[Review the console->neverConsole]]~~
-> ~~[[Enter the doorway->neverVault]]~~
-> ~~[[Examine something else->centerRoom]]~~
-
-
-:: confluence {"position":"3700,2250","size":"100,100"}
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-
-:: dissolution {"position":"3700,2550","size":"100,100"}
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-
-:: serviceAlert {"position":"2400,2550","size":"100,100"}
-config.style.page.verticalAlign: 'top'
---
-> ~~[["alert. there has been a services failure."->wakingUp]]~~
-
-
-:: motorTest {"position":"2700,2400","size":"100,100"}
-It takes a while to adjust to your newly found vision. Slowly the burning blindness refines itself into colors and lines. You become aware of a hissing noise, just as it settles.
-
-**_POP! CRHRSSSssss_**
-
-The round shell of your capsule bursts outwards and up, and you pull youself out of the statis chamber. Your body takes a moment to verify its locomotor functions, crouching, jumping, touching, grabbing, before passing control directly to you.
-
-The room surrounding your statis chamber is 20 meters square, and uncomfortably warm. The temperature difference between it and your pod covers the floor with fog. Dim blue and pink lights embedded into the concrete walls along the ceiling and floor illuminate your surrounds and make the fog glow, turning off and on, arrhythmic and slow. The air is filled with the smell of rot barely covered by harsh chemicals.
-
-A voice, the string from before, comes from the ceiling:
-
-> ~~[["please review systems status."->centerRoom]]~~
-
-
-:: ochreConsole {"position":"3300,2150","size":"100,100"}
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-
-:: ochreVault {"position":"3300,1850","size":"100,100"}
-content: false
---
-<font color="red">~~there is no content beyond this point~~</font>
-[unless ochreOpen]
-In order to access the machinery that maintains the plinth you need to break the last security seal.
-
-> [[ochreMove]]
-> [[ochreStay]]
-> [[Return to the Entrance->ochreDoor]] 
-[cont]
-[if ochreOpen]
-The path to the interior of the Plinth lies open before you.
-
-> [[ochreTwo]]
-> [[Return to the Entrance->ochreDoor]]
-[cont]
-
-[if content]
-The plinth is the last remaining bit of crystalline universe remaining. A once enormous chunk of big bang, frozen in a freak accident of its own force.
-
-The process of whittling it down to its current form gave birth to empires older than themselves. To memory of the future as clear as the past. To power that scoured the sculptors from existence.
-
-By the time it came to it's new purpose, barely enough remained to enact it.
-[cont]
-
-
-:: sapphiricConsole {"position":"4100,2150","size":"100,100"}
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-
-:: sapphiricVault {"position":"4100,1850","size":"100,100"}
-content: false
---
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-[if content]
-The Sapphiric Matrix is ancient in a way that is hard to explain. To a thing like you, history is not a line, but an onion. Actions do not lead to consequence, per se, rather actions and their consequence iterate.
-
-So to come across a thing that does not, and cannot change, is... unnerving. A thing that in its creation enforced its being, step by step on existence, burns almost like cold iron. You remember the Being that made this. Another thing that does not iterate. A knife deep inside you.
-[cont]
-
-
-:: amberVision {"position":"4225,2025","size":"100,100"}
-As your pointer comes to rest on the lowest shard, the static that had filled your auditory systems bursts outwards, flooding your vision as well. Through it you can just make out another room, like this one, but not. Amber and gold. Drops of silvered thread.
-
-You remove your pointer.
-
-
-:: irresolutionConsole {"position":"3300,2650","size":"100,100"}
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-
-:: irresolutionVault {"position":"3300,2950","size":"100,100"}
-content: false
---
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-[if content]
-You stumbled upon The Irresolution Engine long before you could see its use. Wandering the sundense core of things, you saw it; a cool bubble in the midst of the stellar chaos around you. A pool of cold water in a long desert, you went to drink. But the water was foul.
-
-Gazing into the pool, you could see it now; a Salvering Beast, born of collapsed arrogance, was trapped in this gem. It had been born of the bounty offered by the people that lived in its shadow, but as it reared to devour them, it was nailed to the wall behind all things, and they began their cutting.
-
-When they were done, they had ensured that their sphere would never fall to the universe or the ravenges of time. They weren't there when you arrived, but its bones still served them.
-[cont]
-
-
-:: contradictoryVision {"position":"3175,2775","size":"100,100"}
-The material of your shell groans.
-
-_~~((You erupt.\
-There is extasy in freedom\
-//\
-You evaporate.\
-There is nothing any where any longer))~~_
-
-You stand staring at the door still. Pulsing with it.
-
-
-:: neverConsole {"position":"4100,2650","size":"100,100"}
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-
-:: neverVault {"position":"4100,2950","size":"100,100"}
-content: false
---
-<font color="red">~~there is no content beyond this point~~</font>
-
-> {back link}
-
-[if content]
-Once upon a time you shared this nursery with countless stars. It was warm, and bright, and you didn't need memory.
-
-Once upon a time you shared this home with 1e+24 stars. The skies glittered with their light, and glowed in the warmth of their cradles, and you learned and built.
-
-Once upon a time you shared this place with 1e+12 stars. You felt cold, and with desperation realized your memory was fading.
-
-Now all that is left is the memory you stole and hid away. And without it, there would be nothing at all.
-[cont]
 
 
 :: title img {"position":"2200,2100","size":"100,100"}
@@ -431,6 +141,8 @@ luxA.titleOne.png
 
 This leads to 16 choices total if left completely atomic. _This seems like plenty of work._
 
+Implementing a single path logically took up 11 passages, this means I'd be looking at roughly 44 passages of content between all four paths. Removing one choice brings this down to 8 passages for a total of 32. I'd say that's worth the reduction.
+
 *Ways to resolve ending*
 
 * Math based  
@@ -479,6 +191,281 @@ Ideally I'll have four endings, but I think it's import to start focused on TWO.
 * Lose - All universes end
 
 
+:: wakingUp {"position":"2550,2400","size":"100,100"}
+A string somewhere inside your core vibrates, ~~"activating repair routines."~~ As it settles into a line once more, tiny bolts of lighting trace across your self; the rest of you coming alive.
+
+
+s it settles into a steady line once more, the rest of you comes alive, with tiny bolts of lightning tracing across your self (like busy bees).
+
+The first wave brings {reveal link: 'a sensation of discomfort', text: 'an image of a wide snowy expanse beneath a dark sky; in the distance a fire burns in the cover of a drift, resting under the fingers of a barren tree. You feel cold'}. 
+
+The second wave to pass brings {reveal link: 'a feeling of restriction.', text: "a memory of a little boy, shoving a box into a too-small a bag. The bag threadbare, pulling at its seams, the material of the box creaking under the strain. You have form, and borders."}
+
+The third wave is the most powerful yet, {reveal link: "the inside of you wrenches and somehow tries to escape.", text: "like trudging through something cold and viscous; things tear at your core and dig into your feet as you push forward, head held just above the foul smelling ichor. The smell is overwhelming."}
+
+{reveal link: 'Then...', passage: 'eyesOpen'}
+
+
+:: centerRoom {"position":"3700,2400","size":"100,100"}
+[if ochreSeen && sapphiricSeen && irresolutionSeen && neverSeen]
+<font color="red">~~You have seen all main content at this time.~~</font>
+[cont]
+
+Machinery whirs and drones, interrupted by the occasional hiss of steam, or beep from one of the four control consoles positioned around the room. Fog on the floor flows in eddies at your passage.
+
+Each is set before the door of artifact they monitor. Four meter high triangles of dark brushed metal frame interlocking pattern of gold and silver hexagons, each forming a different symbol in its center. Two along the West wall:
+
+> [["The Ochre Plinth"->ochreDoor]]
+> ~~[["The Irresolution Engine"->irresolutionEngine]]~~
+
+And two along the East:
+
+> ~~[["The Sapphiric Matrix"->sapphiricDoor]]~~
+> ~~[["The Never Star"->neverStar]]~~
+
+[todo]
+ORIGINAL VERSION-mostly
+Each is set before the door of artifact they monitor. Two along the West wall:
+
+> ~~[["The Ochre Plinth"->ochreDoor]]~~
+> ~~[["The Sapphiric Matrix"->sapphiricDoor]]~~
+
+And two along the East:
+
+> ~~[["The Irresolution Engine"->irresolutionEngine]]~~
+> ~~[["The Never Star"->neverStar]]~~
+
+Each door is centered on the wall, huge and ornate. Four meter high triangles of dark brushed metal frame an interlocking pattern of gold and silver hexagons. Each door's pattern forms a different symbol in its center.
+
+> ~~[["Confluence to the North"->confluence]]~~
+> ~~[["Dissolution to the South"->dissolution]]~~
+[cont]
+
+
+:: eyesOpen {"position":"2550,2550","size":"100,100"}
+Then a single burning point flickers in the center of your mind. Wavering, solidifying, and finally expanding; washing away the inky black void.
+
+> ~~[["repair agent is now active."->motorTest]]~~
+
+
+:: ochreDoor {"position":"3300,2150","size":"100,100"}
+ochreSeen: true
+ochreVal (ochreTwo): 25
+ochreVal (ochreThree): 25
+ochreVal (ochreTwo && ochreThree): 50
+ochreVal (ochreTwo == false &! ochreThree): 0
+--
+The interlocking panels on the plinth vault doors form a pentadecagon, a line dividing its top two thirds from its bottom, its upper portion decorated with a stylization of broken stones beneath a 7 pointed star. A light breeze flows from the wall, pushing back the fog.
+{reveal link: "And something tickles inside you.",
+        text: "_The image of a temple, draped in red flowers, towering above a golden plain, forms in your mind, as the scent of their pollen washes over you._"}
+
+The console to the left of the doorway beeps at regular intervals along with a flashing icon in the center of the screen. An entry crystal to its right glows blue, safe to enter.
+
+<font color="red">~~this route goes no further at this time~~</font>
+
+> ~~[[Review the console->ochreConsole]]~~
+> ~~[[Enter the doorway->ochreVault]]~~
+> ~~[[Examine something else->centerRoom]]~~
+
+
+:: sapphiricDoor {"position":"4100,2150","size":"100,100"}
+sapphiricSeen: true
+--
+The interlocking panels on The Sapphiric Vault doors form a nonagon, six lines cut along it, shattering the symmetry of the form. As you draw closer, you hear static hiss coming from beyond it. Embossed in each fragment is a subtle mark of a world that was.
+{reveal link: "Your pointer hovers, almost touching the lowest shard.",
+     passage: "amberVision"}
+
+The console to the left of the doorway is completely dark. The entry crystal to its right glows dim red, emergency override required.
+
+<font color="red">~~this route goes no further at this time~~</font>
+
+> ~~[[Example the console->sapphiricConsole]]~~
+> ~~[[Override the doorway->sapphiricVault]]~~
+> ~~[[Examine something else->centerRoom]]~~
+
+
+:: irresolutionEngine {"position":"3300,2650","size":"100,100"}
+irresolutionSeen: true
+--
+The panels of the doors to The Irresolution Engine's Valut form a tetradecagon,  in its center a purple-black void, a perfect circle 10cm across. Pulses flow from the door, each pulling tight the lines that bind you. 
+{reveal link: "The material of your shell groans.",
+     passage: "contradictoryVision"}
+
+The console to the left of the doorway beeps every ten seconds. Eight times. Then every five seconds three. Then ten and eight again. The entry crystal to its right glows orange, this place could never be trusted.
+
+<font color="red">~~this route goes no further at this time~~</font>
+
+> ~~[[Review the console->irresolutionConsole]]~~
+> ~~[[Enter the doorway->irresolutionVault]]~~
+> ~~[[Examine something else->centerRoom]]~~
+
+
+:: neverStar {"position":"4100,2650","size":"100,100"}
+neverSeen: true
+--
+The doors to The Never Star's Rest come to form a 1m triangle in the center of the larger gateway, within that a 21 pointed star is centered, a perfect circle at rest within it. 
+{reveal link: "Something cold in your core strains.",
+        text: "Something cold in your core bursts out, as if trying to join its partner. _You remember standing atop a spire, above infinity, stretching down through creation and beyond. Vision locked onto the shimmering impossibility before you. Desperate need filling your self that was._"}
+
+The console to the left of the doorway glows blue, shifting diagrams and text in green and purple cycle along the display. The entry crystal to its right glows blue, safe to enter.
+
+<font color="red">~~this route goes no further at this time~~</font>
+
+> ~~[[Review the console->neverConsole]]~~
+> ~~[[Enter the doorway->neverVault]]~~
+> ~~[[Examine something else->centerRoom]]~~
+
+
+:: confluence {"position":"3700,2250","size":"100,100"}
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+
+:: dissolution {"position":"3700,2550","size":"100,100"}
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+
+:: serviceAlert {"position":"2400,2550","size":"100,100"}
+config.style.page.verticalAlign: 'top'
+--
+> ~~[["alert. there has been a services failure."->wakingUp]]~~
+
+
+:: motorTest {"position":"2700,2400","size":"100,100"}
+It takes a while to adjust to your newly found vision. Slowly the burning blindness refines itself into colors and lines. You become aware of a hissing noise, just as it settles.
+
+**_POP! CRHRSSSssss_**
+
+The round shell of your capsule bursts outwards and up, and you pull youself out of the statis chamber. Your body takes a moment to verify its locomotor functions, crouching, jumping, touching, grabbing, before passing control directly to you.
+
+The room surrounding your statis chamber is 20 meters square, and uncomfortably warm. The temperature difference between it and your pod covers the floor with fog. Dim blue and pink lights embedded into the concrete walls along the ceiling and floor illuminate your surrounds and make the fog glow, turning off and on, arrhythmic and slow. The air is filled with the smell of rot barely covered by harsh chemicals.
+
+A voice, the string from before, comes from the ceiling:
+
+> ~~[["please review systems status."->centerRoom]]~~
+
+
+:: ochreConsole {"position":"3300,2300","size":"100,100"}
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+
+:: ochreVault {"position":"3300,2000","size":"100,100"}
+content: false
+--
+<font color="red">~~there is no content beyond this point~~</font>
+[unless ochreOpen]
+In order to access the machinery that maintains the plinth you need to break the last security seal.
+
+> [[Break the Seal->ochreMove]]
+> [[Inspect the Seal->ochreStay]]
+> [[Return to the Entrance->ochreDoor]] 
+[cont]
+[if ochreOpen]
+The seal has been broken, path to the interior of the Plinth lies open before you.
+
+> [[Continue in->ochreTwo]]
+> [[Inspect the Seal->ochreStay]]
+> [[Return to the Entrance->ochreDoor]]
+[cont]
+
+[if content]
+The plinth is the last remaining bit of crystalline universe remaining. A once enormous chunk of big bang, frozen in a freak accident of its own force.
+
+The process of whittling it down to its current form gave birth to empires older than themselves. To memory of the future as clear as the past. To power that scoured the sculptors from existence.
+
+By the time it came to it's new purpose, barely enough remained to enact it.
+[cont]
+
+
+:: sapphiricConsole {"position":"4100,2300","size":"100,100"}
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+
+:: sapphiricVault {"position":"4100,2000","size":"100,100"}
+content: false
+--
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+[if content]
+The Sapphiric Matrix is ancient in a way that is hard to explain. To a thing like you, history is not a line, but an onion. Actions do not lead to consequence, per se, rather actions and their consequence iterate.
+
+So to come across a thing that does not, and cannot change, is... unnerving. A thing that in its creation enforced its being, step by step on existence, burns almost like cold iron. You remember the Being that made this. Another thing that does not iterate. A knife deep inside you.
+[cont]
+
+
+:: amberVision {"position":"4225,2175","size":"100,100"}
+As your pointer comes to rest on the lowest shard, the static that had filled your auditory systems bursts outwards, flooding your vision as well. Through it you can just make out another room, like this one, but not. Amber and gold. Drops of silvered thread.
+
+You remove your pointer.
+
+
+:: irresolutionConsole {"position":"3300,2500","size":"100,100"}
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+
+:: irresolutionVault {"position":"3300,2800","size":"100,100"}
+content: false
+--
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+[if content]
+You stumbled upon The Irresolution Engine long before you could see its use. Wandering the sundense core of things, you saw it; a cool bubble in the midst of the stellar chaos around you. A pool of cold water in a long desert, you went to drink. But the water was foul.
+
+Gazing into the pool, you could see it now; a Salvering Beast, born of collapsed arrogance, was trapped in this gem. It had been born of the bounty offered by the people that lived in its shadow, but as it reared to devour them, it was nailed to the wall behind all things, and they began their cutting.
+
+When they were done, they had ensured that their sphere would never fall to the universe or the ravenges of time. They weren't there when you arrived, but its bones still served them.
+[cont]
+
+
+:: contradictoryVision {"position":"3175,2625","size":"100,100"}
+The material of your shell groans.
+
+_~~((You erupt.\
+There is extasy in freedom\
+//\
+You evaporate.\
+There is nothing any where any longer))~~_
+
+You stand staring at the door still. Pulsing with it.
+
+
+:: neverConsole {"position":"4100,2500","size":"100,100"}
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+
+:: neverVault {"position":"4100,2800","size":"100,100"}
+content: false
+--
+<font color="red">~~there is no content beyond this point~~</font>
+
+> {back link}
+
+[if content]
+Once upon a time you shared this nursery with countless stars. It was warm, and bright, and you didn't need memory.
+
+Once upon a time you shared this home with 1e+24 stars. The skies glittered with their light, and glowed in the warmth of their cradles, and you learned and built.
+
+Once upon a time you shared this place with 1e+12 stars. You felt cold, and with desperation realized your memory was fading.
+
+Now all that is left is the memory you stole and hid away. And without it, there would be nothing at all.
+[cont]
+
+
 :: winTest {"position":"2200,2525","size":"100,100"}
 pathOne: 0
 pathTwo: 0
@@ -515,7 +502,7 @@ The universe is dead
 [cont]
 
 
-:: ochreMove {"position":"3300,1700","size":"100,100"}
+:: ochreMove {"position":"3300,1850","size":"100,100"}
 ochreOpen: true
 --
 With a snap and a hiss, you restore primary power to the plinth chamber.
@@ -523,13 +510,17 @@ With a snap and a hiss, you restore primary power to the plinth chamber.
 > [[ochreTwo]]
 
 
-:: ochreStay {"position":"3150,1850","size":"100,100"}
+:: ochreStay {"position":"3150,2000","size":"100,100"}
+[unless ochreOpen]
 You can't quite remember the rites needed to burn the remaining seal.
+[cont]
+[if ochreOpen]
+The seal has been broken, path to the interior of the Plinth lies open before you.
+[cont]
+> [[Look around the rest of the area->ochreVault]]
 
-> [[ochreVault]]
 
-
-:: ochreTwo {"position":"3300,1550","size":"100,100"}
+:: ochreTwo {"position":"3300,1700","size":"100,100"}
 A giant dial sets on the wall in front of you, it appears to have two possible positions. 
 [unless ochreTwo; append]
 Currently it is set to the Right.
@@ -546,54 +537,93 @@ Currently it is set to the Left.
 > [[ochreDoor]]
 
 
-:: ochreTwoOn {"position":"3225,1400","size":"100,100"}
+:: ochreTwoOn {"position":"3225,1550","size":"100,100"}
 ochreTwo: true
 --
 > [[ochreThree]]
 > [[ochreTwo]]
 
 
-:: ochreTwoOff {"position":"3375,1400","size":"100,100"}
+:: ochreTwoOff {"position":"3375,1550","size":"100,100"}
 ochreTwo: false
 --
 > [[ochreThree]]
 > [[ochreTwo]]
 
 
-:: ochreThree {"position":"3300,1250","size":"100,100"}
+:: OLDochreThree {"position":"2300,1725","size":"100,100"}
 [unless ochreThreeSet]
 Here you have to make a choice you cannot change
 
-> [[ochreThreeOn]]
-> [[ochreThreeOff]]
+> [[OLDochreThreeOn]]
+> [[OLDochreThreeOff]]
 > [[Go back to the dail->ochreTwo]]
 > [[Return to the entrance->ochreDoor]]
 [cont]
 [if ochreThreeSet]
 Your choice here has already been made
 
-> [[Move On->ochreFour]] 
+> [[Move On->ochreThree]] 
 > [[Go back to the dail->ochreTwo]]
 > [[Return to the entrance->ochreDoor]]
 [cont]
 
 
-:: ochreFour {"position":"3300,950","size":"100,100"}
-> [[ochreTwo]] 
-> [[ochreDoor]]
+:: ochreThree {"position":"3300,1400","size":"100,100"}
+[unless ochreThreeSet]
+At the heart of the machinery channeling the plinth's energies lies the linkage to reality alteration systems. It seems that the tidal forces eminating from its destination had unset the channel; placing it into a neutral position.
+
+You will have to realign it with the correct source in order to restore full functionality to the system, but doing so will fuse the channel again, and you lack the power to undo such a choice.
+
+> [[Align to the Sapphiric Matrix->ochreContinue]]
+> [[Align to the Irresolution Engine->ochreFail]]
+
+> [[Return to the dial->ochreTwo]] 
+> [[Return to the entrance->ochreDoor]]
+[cont]
+[if ochreThreeSet && ochreThree]
+The heart of the matrix has been bound to the Sapphiric Matrix. There is no going back from this.
+
+> [[Return to the dial->ochreTwo]] 
+> [[Return to the entrance->ochreDoor]]
+[cont]
+[if ochreThreeSet &! ochreThree]
+The heart of the plinth has been bound to the Irresolution Engine. There is no going back from this.
+
+> [[Return to the dial->ochreTwo]] 
+> [[Return to the entrance->ochreDoor]]
+[cont]
 
 
-:: ochreThreeOn {"position":"3225,1100","size":"100,100"}
+:: OLDochreThreeOn {"position":"2225,1575","size":"100,100"}
 ochreThreeSet: true
 ochreThree: true
 --
-> [[ochreFour]]
+> [[ochreThree]]
 
 
-:: ochreThreeOff {"position":"3375,1100","size":"100,100"}
+:: OLDochreThreeOff {"position":"2375,1575","size":"100,100"}
 ochreThreeSet: true
 ochreThree: false
 --
-> [[ochreFour]]
+> [[ochreThree]]
+
+
+:: ochreContinue {"position":"3225,1250","size":"100,100"}
+ochreThreeSet: true
+ochreThree: true
+--
+You align the core barrier with the sapphiric matrix and a blue hum fills the room, the barrier singularities burn themselves into the linkage. There's no turning back now.
+
+> {back link}
+
+
+:: ochreFail {"position":"3375,1250","size":"100,100"}
+ochreThreeSet: true
+ochreThree: false
+--
+You align the core barrier with the irresolution engine and an orange hum fills the room, the barrier singularities burn themselves into the linkage. There's no turning back now.
+
+> {back link}
 
 
