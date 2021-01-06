@@ -57,6 +57,7 @@ ochreThree: false
 ochreFail: false
 
 sapphiricSeen: false
+sapphiricOpen: false
 
 irresolutionSeen: false
 
@@ -301,8 +302,20 @@ By the time it came to it&#39;s new purpose, barely enough remained to enact it.
 &gt; {back link}</tw-passagedata><tw-passagedata pid="19" name="sapphiricVault" tags="" position="4100,2000" size="100,100">content: false
 --
 &lt;font color=&quot;red&quot;&gt;~~there is no content beyond this point~~&lt;/font&gt;
+[unless sapphiricOpen]
+In order to access the machinery that maintains the plinth you need to break the last security seal.
 
-&gt; {back link}
+&gt; [[Break the Seal-&gt;sapphiricMove]]
+&gt; [[Inspect the Seal-&gt;sapphiricStay]]
+&gt; [[Return to the Entrance-&gt;sapphiricDoor]] 
+[cont]
+[if sapphiricOpen]
+The seal has been broken, path to the interior of the Plinth lies open before you.
+
+&gt; [[Continue in-&gt;sapphiricTwo]]
+&gt; [[Inspect the Seal-&gt;sapphiricStay]]
+&gt; [[Return to the Entrance-&gt;sapphiricDoor]]
+[cont]
 
 [if content]
 The Sapphiric Matrix is ancient in a way that is hard to explain. To a thing like you, history is not a line, but an onion. Actions do not lead to consequence, per se, rather actions and their consequence iterate.
@@ -457,4 +470,4 @@ ochreThree: false
 --
 You align the core barrier with the irresolution engine and an orange hum fills the room, the barrier singularities burn themselves into the linkage. There&#39;s no turning back now.
 
-&gt; {back link}</tw-passagedata></tw-storydata>
+&gt; {back link}</tw-passagedata><tw-passagedata pid="39" name="sapphiricMove" tags="" position="3950,2150" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="40" name="sapphiricStay" tags="" position="4220,2055" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="41" name="sapphiricTwo" tags="" position="4345,2150" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>

@@ -6,7 +6,7 @@ Lux Arescentem
 {
 	"ifid": "F5EF9861-D193-45BE-85D3-C3063A666FF4",
 	"format": "Chapbook",
-	"format-version": "1.1.0",
+	"format-version": "1.2.0",
 	"start": "Start",
 	"zoom": 0.6
 }
@@ -76,6 +76,7 @@ ochreThree: false
 ochreFail: false
 
 sapphiricSeen: false
+sapphiricOpen: false
 
 irresolutionSeen: false
 
@@ -392,8 +393,20 @@ By the time it came to it's new purpose, barely enough remained to enact it.
 content: false
 --
 <font color="red">~~there is no content beyond this point~~</font>
+[unless sapphiricOpen]
+In order to access the machinery that maintains the plinth you need to break the last security seal.
 
-> {back link}
+> [[Break the Seal->sapphiricMove]]
+> [[Inspect the Seal->sapphiricStay]]
+> [[Return to the Entrance->sapphiricDoor]] 
+[cont]
+[if sapphiricOpen]
+The seal has been broken, path to the interior of the Plinth lies open before you.
+
+> [[Continue in->sapphiricTwo]]
+> [[Inspect the Seal->sapphiricStay]]
+> [[Return to the Entrance->sapphiricDoor]]
+[cont]
 
 [if content]
 The Sapphiric Matrix is ancient in a way that is hard to explain. To a thing like you, history is not a line, but an onion. Actions do not lead to consequence, per se, rather actions and their consequence iterate.
@@ -625,5 +638,17 @@ ochreThree: false
 You align the core barrier with the irresolution engine and an orange hum fills the room, the barrier singularities burn themselves into the linkage. There's no turning back now.
 
 > {back link}
+
+
+:: sapphiricMove {"position":"3950,2150","size":"100,100"}
+Double-click this passage to edit it.
+
+
+:: sapphiricStay {"position":"4220,2055","size":"100,100"}
+Double-click this passage to edit it.
+
+
+:: sapphiricTwo {"position":"4345,2150","size":"100,100"}
+Double-click this passage to edit it.
 
 
