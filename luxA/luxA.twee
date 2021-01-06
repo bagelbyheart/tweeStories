@@ -81,6 +81,14 @@ sapphiricOpen: false
 irresolutionSeen: false
 
 neverSeen: false
+neverVal: 0
+neverOpen: false
+neverTwo: false
+neverThreeSet: false
+neverThree: false
+neverThreeSet: false
+neverThree: false
+neverFail: false
 --
 [align center]
 {embed passage: 'title img'}
@@ -217,12 +225,12 @@ Machinery whirs and drones, interrupted by the occasional hiss of steam, or beep
 Each is set before the door of artifact they monitor. Four meter high triangles of dark brushed metal frame interlocking pattern of gold and silver hexagons, each forming a different symbol in its center. Two along the West wall:
 
 > [["The Ochre Plinth"->ochreDoor]]
-> ~~[["The Irresolution Engine"->irresolutionEngine]]~~
+> ~~[["The Irresolution Engine"->irresolutionDoor]]~~
 
 And two along the East:
 
 > ~~[["The Sapphiric Matrix"->sapphiricDoor]]~~
-> ~~[["The Never Star"->neverStar]]~~
+> ~~[["The Never Star"->neverDoor]]~~
 
 [todo]
 ORIGINAL VERSION-mostly
@@ -233,8 +241,8 @@ Each is set before the door of artifact they monitor. Two along the West wall:
 
 And two along the East:
 
-> ~~[["The Irresolution Engine"->irresolutionEngine]]~~
-> ~~[["The Never Star"->neverStar]]~~
+> ~~[["The Irresolution Engine"->irresolutionDoor]]~~
+> ~~[["The Never Star"->neverDoor]]~~
 
 Each door is centered on the wall, huge and ornate. Four meter high triangles of dark brushed metal frame an interlocking pattern of gold and silver hexagons. Each door's pattern forms a different symbol in its center.
 
@@ -285,7 +293,7 @@ The console to the left of the doorway is completely dark. The entry crystal to 
 > ~~[[Examine something else->centerRoom]]~~
 
 
-:: irresolutionEngine {"position":"3300,2650","size":"100,100"}
+:: irresolutionDoor {"position":"3300,2650","size":"100,100"}
 irresolutionSeen: true
 --
 The panels of the doors to The Irresolution Engine's Valut form a tetradecagon,  in its center a purple-black void, a perfect circle 10cm across. Pulses flow from the door, each pulling tight the lines that bind you. 
@@ -301,7 +309,7 @@ The console to the left of the doorway beeps every ten seconds. Eight times. The
 > ~~[[Examine something else->centerRoom]]~~
 
 
-:: neverStar {"position":"4100,2650","size":"100,100"}
+:: neverDoor {"position":"4100,2650","size":"100,100"}
 neverSeen: true
 --
 The doors to The Never Star's Rest come to form a 1m triangle in the center of the larger gateway, within that a 21 pointed star is centered, a perfect circle at rest within it. 
@@ -466,7 +474,20 @@ content: false
 --
 <font color="red">~~there is no content beyond this point~~</font>
 
-> {back link}
+[unless neverOpen]
+In order to access the machinery that maintains the plinth you need to break the last security seal.
+
+> [[Break the Seal->neverMove]]
+> [[Inspect the Seal->neverStay]]
+> [[Return to the Entrance->neverDoor]] 
+[cont]
+[if neverOpen]
+The seal has been broken, path to the interior of the Plinth lies open before you.
+
+> [[Continue in->neverTwo]]
+> [[Inspect the Seal->neverStay]]
+> [[Return to the Entrance->neverDoor]]
+[cont]
 
 [if content]
 Once upon a time you shared this nursery with countless stars. It was warm, and bright, and you didn't need memory.
@@ -477,6 +498,15 @@ Once upon a time you shared this place with 1e+12 stars. You felt cold, and with
 
 Now all that is left is the memory you stole and hid away. And without it, there would be nothing at all.
 [cont]
+
+
+:: neverMove
+
+
+:: neverStay
+
+
+:: neverTwo
 
 
 :: winTest {"position":"2200,2525","size":"100,100"}
