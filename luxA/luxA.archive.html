@@ -61,6 +61,14 @@ sapphiricSeen: false
 irresolutionSeen: false
 
 neverSeen: false
+neverVal: 0
+neverOpen: false
+neverTwo: false
+neverThreeSet: false
+neverThree: false
+neverThreeSet: false
+neverThree: false
+neverFail: false
 --
 [align center]
 {embed passage: &#39;title img&#39;}
@@ -177,12 +185,12 @@ Machinery whirs and drones, interrupted by the occasional hiss of steam, or beep
 Each is set before the door of artifact they monitor. Four meter high triangles of dark brushed metal frame interlocking pattern of gold and silver hexagons, each forming a different symbol in its center. Two along the West wall:
 
 &gt; [[&quot;The Ochre Plinth&quot;-&gt;ochreDoor]]
-&gt; ~~[[&quot;The Irresolution Engine&quot;-&gt;irresolutionEngine]]~~
+&gt; ~~[[&quot;The Irresolution Engine&quot;-&gt;irresolutionDoor]]~~
 
 And two along the East:
 
 &gt; ~~[[&quot;The Sapphiric Matrix&quot;-&gt;sapphiricDoor]]~~
-&gt; ~~[[&quot;The Never Star&quot;-&gt;neverStar]]~~
+&gt; ~~[[&quot;The Never Star&quot;-&gt;neverDoor]]~~
 
 [todo]
 ORIGINAL VERSION-mostly
@@ -193,8 +201,8 @@ Each is set before the door of artifact they monitor. Two along the West wall:
 
 And two along the East:
 
-&gt; ~~[[&quot;The Irresolution Engine&quot;-&gt;irresolutionEngine]]~~
-&gt; ~~[[&quot;The Never Star&quot;-&gt;neverStar]]~~
+&gt; ~~[[&quot;The Irresolution Engine&quot;-&gt;irresolutionDoor]]~~
+&gt; ~~[[&quot;The Never Star&quot;-&gt;neverDoor]]~~
 
 Each door is centered on the wall, huge and ornate. Four meter high triangles of dark brushed metal frame an interlocking pattern of gold and silver hexagons. Each door&#39;s pattern forms a different symbol in its center.
 
@@ -230,7 +238,7 @@ The console to the left of the doorway is completely dark. The entry crystal to 
 
 &gt; ~~[[Example the console-&gt;sapphiricConsole]]~~
 &gt; ~~[[Override the doorway-&gt;sapphiricVault]]~~
-&gt; ~~[[Examine something else-&gt;centerRoom]]~~</tw-passagedata><tw-passagedata pid="10" name="irresolutionEngine" tags="" position="3300,2650" size="100,100">irresolutionSeen: true
+&gt; ~~[[Examine something else-&gt;centerRoom]]~~</tw-passagedata><tw-passagedata pid="10" name="irresolutionDoor" tags="" position="3300,2650" size="100,100">irresolutionSeen: true
 --
 The panels of the doors to The Irresolution Engine&#39;s Valut form a tetradecagon,  in its center a purple-black void, a perfect circle 10cm across. Pulses flow from the door, each pulling tight the lines that bind you. 
 {reveal link: &quot;The material of your shell groans.&quot;,
@@ -242,7 +250,7 @@ The console to the left of the doorway beeps every ten seconds. Eight times. The
 
 &gt; ~~[[Review the console-&gt;irresolutionConsole]]~~
 &gt; ~~[[Enter the doorway-&gt;irresolutionVault]]~~
-&gt; ~~[[Examine something else-&gt;centerRoom]]~~</tw-passagedata><tw-passagedata pid="11" name="neverStar" tags="" position="4100,2650" size="100,100">neverSeen: true
+&gt; ~~[[Examine something else-&gt;centerRoom]]~~</tw-passagedata><tw-passagedata pid="11" name="neverDoor" tags="" position="4100,2650" size="100,100">neverSeen: true
 --
 The doors to The Never Star&#39;s Rest come to form a 1m triangle in the center of the larger gateway, within that a 21 pointed star is centered, a perfect circle at rest within it. 
 {reveal link: &quot;Something cold in your core strains.&quot;,
@@ -338,7 +346,20 @@ You stand staring at the door still. Pulsing with it.</tw-passagedata><tw-passag
 --
 &lt;font color=&quot;red&quot;&gt;~~there is no content beyond this point~~&lt;/font&gt;
 
-&gt; {back link}
+[unless neverOpen]
+In order to access the machinery that maintains the plinth you need to break the last security seal.
+
+&gt; [[Break the Seal-&gt;neverMove]]
+&gt; [[Inspect the Seal-&gt;neverStay]]
+&gt; [[Return to the Entrance-&gt;neverDoor]] 
+[cont]
+[if neverOpen]
+The seal has been broken, path to the interior of the Plinth lies open before you.
+
+&gt; [[Continue in-&gt;neverTwo]]
+&gt; [[Inspect the Seal-&gt;neverStay]]
+&gt; [[Return to the Entrance-&gt;neverDoor]]
+[cont]
 
 [if content]
 Once upon a time you shared this nursery with countless stars. It was warm, and bright, and you didn&#39;t need memory.
@@ -348,7 +369,7 @@ Once upon a time you shared this home with 1e+24 stars. The skies glittered with
 Once upon a time you shared this place with 1e+12 stars. You felt cold, and with desperation realized your memory was fading.
 
 Now all that is left is the memory you stole and hid away. And without it, there would be nothing at all.
-[cont]</tw-passagedata><tw-passagedata pid="26" name="winTest" tags="" position="2200,2525" size="100,100">pathOne: 0
+[cont]</tw-passagedata><tw-passagedata pid="26" name="neverMove" tags="" position="725,350" size="100,100"></tw-passagedata><tw-passagedata pid="27" name="neverStay" tags="" position="850,350" size="100,100"></tw-passagedata><tw-passagedata pid="28" name="neverTwo" tags="" position="975,350" size="100,100"></tw-passagedata><tw-passagedata pid="29" name="winTest" tags="" position="2200,2525" size="100,100">pathOne: 0
 pathTwo: 0
 pathThree: 0
 pathFour: 0
@@ -364,7 +385,7 @@ win: false
 * pathThree: {dropdown menu for: &#39;pathThree&#39;, choices: [&#39;0&#39;,&#39;33&#39;,&#39;67&#39;,&#39;100&#39;]}
 * pathFour: {dropdown menu for: &#39;pathFour&#39;, choices: [&#39;0&#39;,&#39;33&#39;,&#39;67&#39;,&#39;100&#39;]}
 
-&gt; [[winCheck]]</tw-passagedata><tw-passagedata pid="27" name="winCheck" tags="" position="2200,2675" size="100,100">pathOneWin (pathOne &gt; 50): 25
+&gt; [[winCheck]]</tw-passagedata><tw-passagedata pid="30" name="winCheck" tags="" position="2200,2675" size="100,100">pathOneWin (pathOne &gt; 50): 25
 pathTwoWin (pathTwo &gt; 50): 25
 pathThreeWin (pathThree &gt; 50): 25
 pathFourWin (pathFour &gt; 50): 25
@@ -376,17 +397,17 @@ You saved the universe
 [cont]
 [unless win]
 The universe is dead
-[cont]</tw-passagedata><tw-passagedata pid="28" name="ochreMove" tags="" position="3300,1850" size="100,100">ochreOpen: true
+[cont]</tw-passagedata><tw-passagedata pid="31" name="ochreMove" tags="" position="3300,1850" size="100,100">ochreOpen: true
 --
 With a snap and a hiss, you restore primary power to the plinth chamber.
 
-&gt; [[ochreTwo]]</tw-passagedata><tw-passagedata pid="29" name="ochreStay" tags="" position="3150,2000" size="100,100">[unless ochreOpen]
+&gt; [[ochreTwo]]</tw-passagedata><tw-passagedata pid="32" name="ochreStay" tags="" position="3150,2000" size="100,100">[unless ochreOpen]
 You can&#39;t quite remember the rites needed to burn the remaining seal.
 [cont]
 [if ochreOpen]
 The seal has been broken, path to the interior of the Plinth lies open before you.
 [cont]
-&gt; [[Look around the rest of the area-&gt;ochreVault]]</tw-passagedata><tw-passagedata pid="30" name="ochreTwo" tags="" position="3300,1700" size="100,100">A giant dial sets on the wall in front of you, it appears to have two possible positions. 
+&gt; [[Look around the rest of the area-&gt;ochreVault]]</tw-passagedata><tw-passagedata pid="33" name="ochreTwo" tags="" position="3300,1700" size="100,100">A giant dial sets on the wall in front of you, it appears to have two possible positions. 
 [unless ochreTwo; append]
 Currently it is set to the Right.
 
@@ -399,13 +420,13 @@ Currently it is set to the Left.
 
 &gt; [[Continue On-&gt;ochreThree]]
 &gt; [[Turn it Right-&gt;ochreTwoOff]]
-&gt; [[ochreDoor]]</tw-passagedata><tw-passagedata pid="31" name="ochreTwoOn" tags="" position="3225,1550" size="100,100">ochreTwo: true
+&gt; [[ochreDoor]]</tw-passagedata><tw-passagedata pid="34" name="ochreTwoOn" tags="" position="3225,1550" size="100,100">ochreTwo: true
 --
 &gt; [[ochreThree]]
-&gt; [[ochreTwo]]</tw-passagedata><tw-passagedata pid="32" name="ochreTwoOff" tags="" position="3375,1550" size="100,100">ochreTwo: false
+&gt; [[ochreTwo]]</tw-passagedata><tw-passagedata pid="35" name="ochreTwoOff" tags="" position="3375,1550" size="100,100">ochreTwo: false
 --
 &gt; [[ochreThree]]
-&gt; [[ochreTwo]]</tw-passagedata><tw-passagedata pid="33" name="OLDochreThree" tags="" position="2300,1725" size="100,100">[unless ochreThreeSet]
+&gt; [[ochreTwo]]</tw-passagedata><tw-passagedata pid="36" name="OLDochreThree" tags="" position="2300,1725" size="100,100">[unless ochreThreeSet]
 Here you have to make a choice you cannot change
 
 &gt; [[OLDochreThreeOn]]
@@ -419,7 +440,7 @@ Your choice here has already been made
 &gt; [[Move On-&gt;ochreThree]] 
 &gt; [[Go back to the dail-&gt;ochreTwo]]
 &gt; [[Return to the entrance-&gt;ochreDoor]]
-[cont]</tw-passagedata><tw-passagedata pid="34" name="ochreThree" tags="" position="3300,1400" size="100,100">[unless ochreThreeSet]
+[cont]</tw-passagedata><tw-passagedata pid="37" name="ochreThree" tags="" position="3300,1400" size="100,100">[unless ochreThreeSet]
 At the heart of the machinery channeling the plinth&#39;s energies lies the linkage to reality alteration systems. It seems that the tidal forces eminating from its destination had unset the channel; placing it into a neutral position.
 
 You will have to realign it with the correct source in order to restore full functionality to the system, but doing so will fuse the channel again, and you lack the power to undo such a choice.
@@ -441,18 +462,18 @@ The heart of the plinth has been bound to the Irresolution Engine. There is no g
 
 &gt; [[Return to the dial-&gt;ochreTwo]] 
 &gt; [[Return to the entrance-&gt;ochreDoor]]
-[cont]</tw-passagedata><tw-passagedata pid="35" name="OLDochreThreeOn" tags="" position="2225,1575" size="100,100">ochreThreeSet: true
+[cont]</tw-passagedata><tw-passagedata pid="38" name="OLDochreThreeOn" tags="" position="2225,1575" size="100,100">ochreThreeSet: true
 ochreThree: true
 --
-&gt; [[ochreThree]]</tw-passagedata><tw-passagedata pid="36" name="OLDochreThreeOff" tags="" position="2375,1575" size="100,100">ochreThreeSet: true
+&gt; [[ochreThree]]</tw-passagedata><tw-passagedata pid="39" name="OLDochreThreeOff" tags="" position="2375,1575" size="100,100">ochreThreeSet: true
 ochreThree: false
 --
-&gt; [[ochreThree]]</tw-passagedata><tw-passagedata pid="37" name="ochreContinue" tags="" position="3225,1250" size="100,100">ochreThreeSet: true
+&gt; [[ochreThree]]</tw-passagedata><tw-passagedata pid="40" name="ochreContinue" tags="" position="3225,1250" size="100,100">ochreThreeSet: true
 ochreThree: true
 --
 You align the core barrier with the sapphiric matrix and a blue hum fills the room, the barrier singularities burn themselves into the linkage. There&#39;s no turning back now.
 
-&gt; {back link}</tw-passagedata><tw-passagedata pid="38" name="ochreFail" tags="" position="3375,1250" size="100,100">ochreThreeSet: true
+&gt; {back link}</tw-passagedata><tw-passagedata pid="41" name="ochreFail" tags="" position="3375,1250" size="100,100">ochreThreeSet: true
 ochreThree: false
 --
 You align the core barrier with the irresolution engine and an orange hum fills the room, the barrier singularities burn themselves into the linkage. There&#39;s no turning back now.
