@@ -59,6 +59,7 @@ img {
 :: Start {"position":"2400,2400","size":"100,100"}
 config.style.page.verticalAlign: 'top'
 config.footer.center: "_**{story.name}**_"
+config.header.center: "_**{passage.name}**_"
 config.footer.left: "{back link}"
 config.footer.right: "{restart link}"
 
@@ -68,6 +69,8 @@ config.style.page.link.lineColor: '#e6e6ff'
 config.style.backdrop: '#e6e6ff'
 
 config.style.page.link.active.color: "#c5503d on red-0"
+config.style.page.font: "Iowan Old Style/Constantia/Georgia/serif 16"
+
 
 mainProg: 0
 
@@ -105,8 +108,9 @@ A short narrative exploration.\
 By <a target="_blank" href="http://twitter.com/bagelbyheart">@bagelbyheart</a>
 [cont]
 
-> [["The Ochre Plinth"->ochreDoor]]
-> ~~[[Begin->serviceAlert]]~~
+> [[Jump->centerRoom]] 
+> [[ScratchPad->scratch]]
+> [[Begin->serviceAlert]]
 
 
 :: title img {"position":"2200,2100","size":"100,100"}
@@ -218,6 +222,20 @@ The plinth is the last remaining bit of crystalline universe remaining. A once e
 The process of whittling it down to its current form gave birth to empires older than themselves. To memory of the future as clear as the past. To power that scoured the sculptors from existence.
 
 By the time it came to it's new purpose, barely enough remained to enact it.
+
+_Now_
+
+The Plinth is a glowing Ochre cylinder with 8 faces. Its bottom flares briefly before coming to a point. Its top is a broken chisled plane. Shadows dim the glow, flowing upward, like smoke swirling into the sky.
+
+It once sat upon an altar of greatest honor. Not it is bound in rings of dark metal and dim glass. Each pulse of it’s light is swallowed by nodules embedding in the rings. As it’s warm glow dims, the cold blue glow of the machines around grow.
+
+Four monks sat in prayer around it when you found it. And without their attention it became unstable. While you found that your attention could also maintain it; it was required elsewhere. So you found a way to bind them in service elsewhere (irresolution engine).
+
+_What is wrong?_
+
+* The Monks have turned away - Irresolution Engine
+* Hope/Belief is key - The Never Star
+* Flow has stalled - Sapphiric Matrix
 </div>
 
 <div style="background: #386192;" class="screen">
@@ -273,10 +291,11 @@ Ideally I'll have four endings, but I think it's import to start focused on TWO.
 
 
 :: wakingUp {"position":"2550,2400","size":"100,100"}
-A string somewhere inside your core vibrates, ~~"activating repair routines."~~ As it settles into a line once more, tiny bolts of lighting trace across your self; the rest of you coming alive.
+A string somewhere inside your core vibrates, {reveal link: '~~"activating repair routines."~~', passage: 'wakeUpTwo'}
 
 
-s it settles into a steady line once more, the rest of you comes alive, with tiny bolts of lightning tracing across your self (like busy bees).
+:: wakeUpTwo
+~~"activating repair routines."~~ As it settles into a line once more, tiny bolts of lighting trace across your self; your body coming to life.
 
 The first wave brings {reveal link: 'a sensation of discomfort', text: 'an image of a wide snowy expanse beneath a dark sky; in the distance a fire burns in the cover of a drift, resting under the fingers of a barren tree. You feel cold'}. 
 
@@ -294,33 +313,15 @@ The third wave is the most powerful yet, {reveal link: "the inside of you wrench
 
 Machinery whirs and drones, interrupted by the occasional hiss of steam, or beep from one of the four control consoles positioned around the room. Fog on the floor flows in eddies at your passage.
 
-Each is set before the door of artifact they monitor. Four meter high triangles of dark brushed metal frame interlocking pattern of gold and silver hexagons, each forming a different symbol in its center. Two along the West wall:
+Each console is set before the door of artifact they monitor. Four meter high triangles of dark brushed metal frame interlocking patterns of gold and silver hexagons, each forming a different symbol in its center. Two along the West wall:
 
-> [["The Ochre Plinth"->ochreDoor]]
-> ~~[["The Irresolution Engine"->irresolutionDoor]]~~
-
-And two along the East:
-
-> ~~[["The Sapphiric Matrix"->sapphiricDoor]]~~
-> ~~[["The Never Star"->neverDoor]]~~
-
-[todo]
-ORIGINAL VERSION-mostly
-Each is set before the door of artifact they monitor. Two along the West wall:
-
-> ~~[["The Ochre Plinth"->ochreDoor]]~~
-> ~~[["The Sapphiric Matrix"->sapphiricDoor]]~~
+> [["Ochre Plinth"->ochreDoor]]
+> [["Irresolution Engine"->irresolutionDoor]]
 
 And two along the East:
 
-> ~~[["The Irresolution Engine"->irresolutionDoor]]~~
-> ~~[["The Never Star"->neverDoor]]~~
-
-Each door is centered on the wall, huge and ornate. Four meter high triangles of dark brushed metal frame an interlocking pattern of gold and silver hexagons. Each door's pattern forms a different symbol in its center.
-
-> ~~[["Confluence to the North"->confluence]]~~
-> ~~[["Dissolution to the South"->dissolution]]~~
-[cont]
+> [["Sapphiric Matrix"->sapphiricDoor]]
+> [["Never Star"->neverDoor]]
 
 
 :: eyesOpen {"position":"2550,2550","size":"100,100"}
