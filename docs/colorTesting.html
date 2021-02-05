@@ -1,0 +1,161 @@
+<style>
+:root {
+--soBlack:rgb(0, 43, 54);
+--soBoldBlack:rgb(101, 123, 131);
+--soRed:rgb(220, 50, 47);
+--soBoldRed:rgb(232, 115, 113);
+--soGreen:rgb(133, 153, 0);
+--soBoldGreen:rgb(199, 228, 0);
+--soYellow:rgb(181, 137, 0);
+--soBoldYellow:rgb(255, 193, 2);
+--soBlue:rgb(38, 139, 210);
+--soBoldBlue:rgb(99, 173, 227);
+--soMagenta:rgb(108, 113, 196);
+--soBoldMagenta:rgb(162, 165, 217);
+--soCyan:rgb(42, 161, 152);
+--soBoldCyan:rgb(71, 207, 197);
+--soWhite:rgb(147, 161, 161);
+--soBoldWhite:rgb(253, 246, 227);
+--soBackground:var(--soBlack);
+--soForeground:var(--soWhite);
+background-color:var(--soBackground);
+background:url('CherryLow.png');
+background-size:cover;
+image-rendering: pixelated;
+color:var(--soForeground);
+font-family:monospace;
+}
+
+div {
+ max-width: 46em;
+ background-color:var(--soBackground);
+ padding: 1em;
+ margin: 1em;
+}
+
+input {
+ font-family:monospace;
+ color: var(--soForeground);
+ background-color: var(--soBackground);
+}
+
+.bold {
+ font-weight:bold;
+ font-size: larger;
+}
+
+</style>
+<body onload="clInit()">
+
+<div>
+<p>
+<span onclick="bgToggle()" class="bold">Toggle BG Color</span> |
+<span onclick="clUpdate()" class="bold">Update Colors</span>
+</p>
+</div>
+<div>
+<h2>AnsiColor Names to Values</h2>
+<p>You can edit this palette by changing the color values below. Each box accepts colorAPI values such as rgb(0,0,0) or #000000. Colors should update as you change the values present, but if not, click Update Colors at the top of the page.</p>
+<table>
+<tr>
+<td><span style='color: var(--soBlack);'>Black</span><br /><input type="text" id="soBlack" /></td>
+<td><span style='color: var(--soRed);'>Red</span><br /><input type="text" id="soRed" /></td>
+<td><span style='color: var(--soGreen);'>Green</span><br /><input type="text" id="soGreen" /></td>
+<td><span style='color: var(--soYellow);'>Yellow</span><br /><input type="text" id="soYellow" /></td>
+</tr>
+<tr>
+<td><span style='color: var(--soBlue);'>Blue</span><br /><input type="text" id="soBlue" /></td>
+<td><span style='color: var(--soMagenta);'>Magenta</span><br /><input type="text" id="soMagenta" /></td>
+<td><span style='color: var(--soCyan);'>Cyan</span><br /><input type="text" id="soCyan" /></td>
+<td><span style='color: var(--soWhite);'>White</span><br /><input type="text" id="soWhite" /></td>
+</tr>
+<tr>
+<td><span style='color: var(--soBoldBlack);'>BoldBlack</span><br /><input type="text" id="soBoldBlack" /></td>
+<td><span style='color: var(--soBoldRed);'>BoldRed</span><br /><input type="text" id="soBoldRed" /></td>
+<td><span style='color: var(--soBoldGreen);'>BoldGreen</span><br /><input type="text" id="soBoldGreen" /></td>
+<td><span style='color: var(--soBoldYellow);'>BoldYellow</span><br /><input type="text" id="soBoldYellow" /></td>
+</tr>
+<tr>
+<td><span style='color: var(--soBoldBlue);'>BoldBlue</span><br /><input type="text" id="soBoldBlue" /></td>
+<td><span style='color: var(--soBoldMagenta);'>BoldMagenta</span><br /><input type="text" id="soBoldMagenta" /></td>
+<td><span style='color: var(--soBoldCyan);'>BoldCyan</span><br /><input type="text" id="soBoldCyan" /></td>
+<td><span style='color: var(--soBoldWhite);'>BoldWhite</span><br /><input type="text" id="soBoldWhite" /></td>
+</tr>
+</table>
+</div>
+<div>
+<h2>$LS_COLORS examples</h2>
+<h3>File Types</h3>
+<p>
+<span style="color: var(--soWhite);">rs (reset to no color)</span><br />
+<span style="color: var(--soBoldBlue);">di (directory)</span><br />
+<span style="color: var(--soBoldCyan);">ln (symbolic link)</span><br />
+<span style="color: var(--soWhite);">mh (multi-hardlink)</span><br />
+<span style="color: var(--soYellow);">pi (named pipe, AKA FIFO)</span><br />
+<span style="color: var(--soBoldMagenta);">so (socket) do (door)</span><br />
+<span style="color: var(--soBoldYellow);">bd (block device) cd (character device)</span><br />
+<span style="color: var(--soBoldRed);">or (orphan symlink)</span><br />
+<span style="color: var(--soWhite);">mi (missing file)</span><br />
+<span style="color: var(--soWhite); background: var(--soRed);">su (set-user-ID)</span><br />
+<span style="color: var(--soBlack); background: var(--soYellow);">sg (set-group-ID)</span><br />
+<span style="color: var(--soBlack); background: var(--soRed);">ca (file with capability)</span><br />
+<span style="color: var(--soBlack); background: var(--soGreen);">tw (sticky and other-writable directory)</span><br />
+<span style="color: var(--soBlue); background: var(--soGreen);">ow (other-writable directory)</span><br />
+<span style="color: var(--soWhite); background: var(--soBlue);">st (sticky directory)</span><br />
+<span style="color: var(--soBoldGreen);">ex (executable file)</span>
+</p>
+<h3>File Extensions</h3>
+<p>
+# Archive Extensions<br />
+<span style="color: var(--soBoldRed);">*.tar *.tgz *.arc *.arj *.taz *.lha *.lz4 *.lzh *.lzma *.tlz *.txz *.tzo *.t7z *.zip *.z *.Z *.dz *.gz *.lrz *.lz *.lzo *.xz *.zst *.tzst *.bz2 *.bz *.tbz *.tbz2 *.tz *.deb *.rpm *.jar *.war *.ear *.sar *.rar *.alz *.ace *.zoo *.cpio *.7z *.rz *.cab</span><br />
+# Image Extensions<br />
+<span style="color: var(--soBoldMagenta);">*.jpg *.jpeg *.mjpg *.mjpeg *.gif *.bmp *.pbm *.pgm *.ppm *.tga *.xbm *.xpm *.tif *.tiff *.png *.svg *.svgz *.mng *.pcx *.mov *.mpg *.mpeg *.m2v *.mkv *.webm *.ogm *.mp4 *.m4v *.mp4v *.vob *.qt *.nuv *.wmv *.asf *.rm *.rmvb *.flc *.avi *.fli *.flv *.gl *.dl *.xcf *.xwd *.yuv *.cgm *.emf *.ogv *.ogx</span><br />
+# Audio Extensions<br />
+<span style="color: var(--soCyan);">*.aac *.au *.flac *.m4a *.mid *.midi *.mka *.mp3 *.mpc *.ogg *.ra *.wav *.oga *.opus *.spx *.xspf</span>
+</p>
+</div>
+</body>
+<script>
+element = document.querySelector(':root')
+colors = ["Black","Red","Green","Yellow","Blue","Magenta","Cyan","White","BoldBlack","BoldRed","BoldGreen","BoldYellow","BoldBlue","BoldMagenta","BoldCyan","BoldWhite"]
+
+function clInit() {
+
+ colors.forEach(function(item) {
+  sColor = getComputedStyle(element).getPropertyValue("--so"+item)
+  document.getElementById("so"+item).value = sColor
+  document.getElementById("so"+item).setAttribute("onchange","clUpdate()")
+  document.getElementById("so"+item).setAttribute("size","17")
+ })
+}
+
+function clUpdate() {
+ colors.forEach(function(item) {
+  nColor = document.getElementById("so"+item).value
+  element.style.setProperty('--so'+item,nColor)
+  })
+ 
+}
+
+function bgToggle() {
+ boldWhite = getComputedStyle(element).getPropertyValue("--soBoldWhite")
+ black = getComputedStyle(element).getPropertyValue("--soBlack")
+ background = getComputedStyle(element).getPropertyValue("background-color")
+ if (background === black) { element.style.backgroundColor = boldWhite; }
+ else { element.style.backgroundColor = black; }
+}
+
+function bgToggle() {
+ boldWhite = getComputedStyle(element).getPropertyValue("--soBoldWhite")
+ black = getComputedStyle(element).getPropertyValue("--soBlack")
+ background = getComputedStyle(element).getPropertyValue("background-color")
+ if (background === black) { 
+  element.style.setProperty("--soBackground","var(--soBoldWhite)")
+  element.style.setProperty("--soForeground","var(--soBlack)")
+  }
+ else { 
+  element.style.setProperty("--soBackground","var(--soBlack)");
+  element.style.setProperty("--soForeground","var(--soWhite)");
+  }
+}
+</script>
