@@ -19,7 +19,7 @@
 --soBackground:var(--soBlack);
 --soForeground:var(--soWhite);
 background-color:var(--soBackground);
-background:url('CherryLow.png');
+background:url('http://bagelbyheart.com/CherryLow.png');
 background-size:cover;
 image-rendering: pixelated;
 color:var(--soForeground);
@@ -29,6 +29,7 @@ font-family:monospace;
 div {
  max-width: 46em;
  background-color:var(--soBackground);
+ color:var(--soForeground);
  padding: 1em;
  margin: 1em;
 }
@@ -145,17 +146,21 @@ function bgToggle() {
  else { element.style.backgroundColor = black; }
 }
 
+
 function bgToggle() {
+document.querySelectorAll('div').forEach(function(item) {
+ background = getComputedStyle(item).getPropertyValue('background-color')
  boldWhite = getComputedStyle(element).getPropertyValue("--soBoldWhite")
- black = getComputedStyle(element).getPropertyValue("--soBlack")
- background = getComputedStyle(element).getPropertyValue("background-color")
+ black = getComputedStyle(element).getPropertyValue("--soBlack") 
+ console.log(background+","+boldWhite+","+black)
  if (background === black) { 
-  element.style.setProperty("--soBackground","var(--soBoldWhite)")
-  element.style.setProperty("--soForeground","var(--soBlack)")
+  item.style.setProperty("--soBackground","var(--soBoldWhite)")
+  item.style.setProperty("--soForeground","var(--soBlack)")
   }
  else { 
-  element.style.setProperty("--soBackground","var(--soBlack)");
-  element.style.setProperty("--soForeground","var(--soWhite)");
+  item.style.setProperty("--soBackground","var(--soBlack)");
+  item.style.setProperty("--soForeground","var(--soWhite)");
   }
+ })
 }
 </script>
