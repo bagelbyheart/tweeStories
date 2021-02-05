@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 :root {
 --soBlack:rgb(0, 43, 54);
@@ -26,8 +27,15 @@ color:var(--soForeground);
 font-family:monospace;
 }
 
+.td {
+ margin:0;
+ padding:5;
+ display:inline-block;
+ border-style:dashed;
+ text-align:center;
+}
+
 div {
- max-width: 46em;
  background-color:var(--soBackground);
  color:var(--soForeground);
  padding: 1em;
@@ -36,6 +44,7 @@ div {
 
 input {
  font-family:monospace;
+ font-size:smaller;
  color: var(--soForeground);
  background-color: var(--soBackground);
 }
@@ -51,38 +60,31 @@ input {
 <div>
 <p>
 <span onclick="bgToggle()" class="bold">Toggle BG Color</span> |
-<span onclick="clUpdate()" class="bold">Update Colors</span>
+<span onclick="clUpdate()" class="bold">Update Colors</span> | 
+<a href="https://coolors.co/contrast-checker">Check Contrast</a>
 </p>
 </div>
 <div>
 <h2>AnsiColor Names to Values</h2>
 <p>You can edit this palette by changing the color values below. Each box accepts colorAPI values such as rgb(0,0,0) or #000000. Colors should update as you change the values present, but if not, click Update Colors at the top of the page.</p>
-<table>
-<tr>
-<td><span style='color: var(--soBlack);'>Black</span><br /><input type="text" id="soBlack" /></td>
-<td><span style='color: var(--soRed);'>Red</span><br /><input type="text" id="soRed" /></td>
-<td><span style='color: var(--soGreen);'>Green</span><br /><input type="text" id="soGreen" /></td>
-<td><span style='color: var(--soYellow);'>Yellow</span><br /><input type="text" id="soYellow" /></td>
-</tr>
-<tr>
-<td><span style='color: var(--soBlue);'>Blue</span><br /><input type="text" id="soBlue" /></td>
-<td><span style='color: var(--soMagenta);'>Magenta</span><br /><input type="text" id="soMagenta" /></td>
-<td><span style='color: var(--soCyan);'>Cyan</span><br /><input type="text" id="soCyan" /></td>
-<td><span style='color: var(--soWhite);'>White</span><br /><input type="text" id="soWhite" /></td>
-</tr>
-<tr>
-<td><span style='color: var(--soBoldBlack);'>BoldBlack</span><br /><input type="text" id="soBoldBlack" /></td>
-<td><span style='color: var(--soBoldRed);'>BoldRed</span><br /><input type="text" id="soBoldRed" /></td>
-<td><span style='color: var(--soBoldGreen);'>BoldGreen</span><br /><input type="text" id="soBoldGreen" /></td>
-<td><span style='color: var(--soBoldYellow);'>BoldYellow</span><br /><input type="text" id="soBoldYellow" /></td>
-</tr>
-<tr>
-<td><span style='color: var(--soBoldBlue);'>BoldBlue</span><br /><input type="text" id="soBoldBlue" /></td>
-<td><span style='color: var(--soBoldMagenta);'>BoldMagenta</span><br /><input type="text" id="soBoldMagenta" /></td>
-<td><span style='color: var(--soBoldCyan);'>BoldCyan</span><br /><input type="text" id="soBoldCyan" /></td>
-<td><span style='color: var(--soBoldWhite);'>BoldWhite</span><br /><input type="text" id="soBoldWhite" /></td>
-</tr>
-</table>
+
+<div class="td"><span style='color: var(--soBlack);'>Black</span><br /><input type="text" id="soBlack" />                  </div>
+<div class="td"><span style='color: var(--soRed);'>Red</span><br /><input type="text" id="soRed" />                        </div>
+<div class="td"><span style='color: var(--soGreen);'>Green</span><br /><input type="text" id="soGreen" />                  </div>
+<div class="td"><span style='color: var(--soYellow);'>Yellow</span><br /><input type="text" id="soYellow" />               </div>
+<div class="td"><span style='color: var(--soBlue);'>Blue</span><br /><input type="text" id="soBlue" />                     </div>
+<div class="td"><span style='color: var(--soMagenta);'>Magenta</span><br /><input type="text" id="soMagenta" />            </div>
+<div class="td"><span style='color: var(--soCyan);'>Cyan</span><br /><input type="text" id="soCyan" />                     </div>
+<div class="td"><span style='color: var(--soWhite);'>White</span><br /><input type="text" id="soWhite" />                  </div>
+<div class="td"><span style='color: var(--soBoldBlack);'>BoldBlack</span><br /><input type="text" id="soBoldBlack" />      </div>
+<div class="td"><span style='color: var(--soBoldRed);'>BoldRed</span><br /><input type="text" id="soBoldRed" />            </div>
+<div class="td"><span style='color: var(--soBoldGreen);'>BoldGreen</span><br /><input type="text" id="soBoldGreen" />      </div>
+<div class="td"><span style='color: var(--soBoldYellow);'>BoldYellow</span><br /><input type="text" id="soBoldYellow" />   </div>
+<div class="td"><span style='color: var(--soBoldBlue);'>BoldBlue</span><br /><input type="text" id="soBoldBlue" />         </div>
+<div class="td"><span style='color: var(--soBoldMagenta);'>BoldMagenta</span><br /><input type="text" id="soBoldMagenta" /></div>
+<div class="td"><span style='color: var(--soBoldCyan);'>BoldCyan</span><br /><input type="text" id="soBoldCyan" />         </div>
+<div class="td"><span style='color: var(--soBoldWhite);'>BoldWhite</span><br /><input type="text" id="soBoldWhite" />      </div>
+
 </div>
 <div>
 <h2>$LS_COLORS examples</h2>
