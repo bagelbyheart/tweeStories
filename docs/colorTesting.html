@@ -115,25 +115,58 @@ input {
 <span style="color: var(--soCyan);">*.aac *.au *.flac *.m4a *.mid *.midi *.mka *.mp3 *.mpc *.ogg *.ra *.wav *.oga *.opus *.spx *.xspf</span>
 </p>
 </div>
+<div>
+<h2>.minttyrc File</h2>
+<p>Copy and paste the text below into your ~/.minttyrc file in order to use this color theme.</p>
+<p>
+<span id="Black"></span><br />
+<span id="Red"></span><br />
+<span id="Green"></span><br />
+<span id="Yellow"></span><br />
+<span id="Blue"></span><br />
+<span id="Magenta"></span><br />
+<span id="Cyan"></span><br />
+<span id="White"></span><br />
+<span id="BoldBlack"></span><br />
+<span id="BoldRed"></span><br />
+<span id="BoldGreen"></span><br />
+<span id="BoldYellow"></span><br />
+<span id="BoldBlue"></span><br />
+<span id="BoldMagenta"></span><br />
+<span id="BoldCyan"></span><br />
+<span id="BoldWhite"></span><br />
+</p>
+</div>
+
 </body>
 <script>
 element = document.querySelector(':root')
 colors = ["Black","Red","Green","Yellow","Blue","Magenta","Cyan","White","BoldBlack","BoldRed","BoldGreen","BoldYellow","BoldBlue","BoldMagenta","BoldCyan","BoldWhite"]
 
+rgbTest = getComputedStyle(element).getPropertyValue("--soBlack")
+
+
+let regexp = /.*\((.*)\)/;
+lrgb = rgbTest.replace(regexp,'$1').replaceAll(' ','')
+
 function clInit() {
 
  colors.forEach(function(item) {
   sColor = getComputedStyle(element).getPropertyValue("--so"+item)
+  oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
   document.getElementById("so"+item).value = sColor
   document.getElementById("so"+item).setAttribute("onchange","clUpdate()")
   document.getElementById("so"+item).setAttribute("size","17")
+  document.getElementById(item).innerHTML = item+":"+oColor
  })
 }
 
 function clUpdate() {
  colors.forEach(function(item) {
   nColor = document.getElementById("so"+item).value
+  oColor = nColor.replace(regexp,'$1').replaceAll(' ','')
   element.style.setProperty('--so'+item,nColor)
+  document.getElementById(item).innerHTML = item+":"+oColor
   })
  
 }
