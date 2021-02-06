@@ -26,12 +26,16 @@ image-rendering: pixelated;
 color:var(--soForeground);
 font-family:monospace;
 }
+body {
+ width: 46em;
+}
 
 .td {
  margin:0;
  padding:5;
  display:inline-block;
  border-style:dashed;
+ border-width:1px;
  text-align:center;
 }
 
@@ -54,6 +58,37 @@ input {
  font-size: larger;
 }
 
+.no_pad {
+ padding: 1px;
+}
+
+.box {
+ font-weight: bold;
+ display: inline-block;
+ width: fit-content;
+ text-align: center;
+ border-style: solid;
+ margin: 5px 0px 5px 0px;
+ border-width: 1px;
+ padding: 5px 0px 0px 0px;
+}
+
+.boxfill {
+ border-radius: 0px;
+ margin:5px 0px 0px 0px;
+ height: 5em;
+ border-style: solid none solid none;
+ border-width: 1px;
+}
+
+input {
+ display: block;
+ width: 100%;
+ border-style: none;
+ border-width: 1px;
+ padding: 5px;
+}
+
 </style>
 <body onload="clInit()">
 
@@ -67,23 +102,22 @@ input {
 <div>
 <h2>AnsiColor Names to Values</h2>
 <p>You can edit this palette by changing the color values below. Each box accepts colorAPI values such as rgb(0,0,0) or #000000. Colors should update as you change the values present, but if not, click Update Colors at the top of the page.</p>
-
-<div class="td"><span style='color: var(--soBlack);'>Black</span><br /><input type="text" id="soBlack" />                  </div>
-<div class="td"><span style='color: var(--soRed);'>Red</span><br /><input type="text" id="soRed" />                        </div>
-<div class="td"><span style='color: var(--soGreen);'>Green</span><br /><input type="text" id="soGreen" />                  </div>
-<div class="td"><span style='color: var(--soYellow);'>Yellow</span><br /><input type="text" id="soYellow" />               </div>
-<div class="td"><span style='color: var(--soBlue);'>Blue</span><br /><input type="text" id="soBlue" />                     </div>
-<div class="td"><span style='color: var(--soMagenta);'>Magenta</span><br /><input type="text" id="soMagenta" />            </div>
-<div class="td"><span style='color: var(--soCyan);'>Cyan</span><br /><input type="text" id="soCyan" />                     </div>
-<div class="td"><span style='color: var(--soWhite);'>White</span><br /><input type="text" id="soWhite" />                  </div>
-<div class="td"><span style='color: var(--soBoldBlack);'>BoldBlack</span><br /><input type="text" id="soBoldBlack" />      </div>
-<div class="td"><span style='color: var(--soBoldRed);'>BoldRed</span><br /><input type="text" id="soBoldRed" />            </div>
-<div class="td"><span style='color: var(--soBoldGreen);'>BoldGreen</span><br /><input type="text" id="soBoldGreen" />      </div>
-<div class="td"><span style='color: var(--soBoldYellow);'>BoldYellow</span><br /><input type="text" id="soBoldYellow" />   </div>
-<div class="td"><span style='color: var(--soBoldBlue);'>BoldBlue</span><br /><input type="text" id="soBoldBlue" />         </div>
-<div class="td"><span style='color: var(--soBoldMagenta);'>BoldMagenta</span><br /><input type="text" id="soBoldMagenta" /></div>
-<div class="td"><span style='color: var(--soBoldCyan);'>BoldCyan</span><br /><input type="text" id="soBoldCyan" />         </div>
-<div class="td"><span style='color: var(--soBoldWhite);'>BoldWhite</span><br /><input type="text" id="soBoldWhite" />      </div>
+<div class="box">Black<div class="boxfill" style='background-color: var(--soBlack);'></div><input type="text" id="soBlack" /></div>
+<div class="box">Red<div class="boxfill" style='background-color: var(--soRed);'></div><input type="text" id="soRed" /></div>
+<div class="box">Green<div class="boxfill" style='background-color: var(--soGreen);'></div><input type="text" id="soGreen" /></div>
+<div class="box">Yellow<div class="boxfill" style='background-color: var(--soYellow);'></div><input type="text" id="soYellow" /></div>
+<div class="box">Blue<div class="boxfill" style='background-color: var(--soBlue);'></div><input type="text" id="soBlue" /></div>
+<div class="box">Magenta<div class="boxfill" style='background-color: var(--soMagenta);'></div><input type="text" id="soMagenta" /></div>
+<div class="box">Cyan<div class="boxfill" style='background-color: var(--soCyan);'></div><input type="text" id="soCyan" /></div>
+<div class="box">White<div class="boxfill" style='background-color: var(--soWhite);'></div><input type="text" id="soWhite" /></div>
+<div class="box">BoldBlack<div class="boxfill" style='background-color: var(--soBoldBlack);'></div><input type="text" id="soBoldBlack" /></div>
+<div class="box">BoldRed<div class="boxfill" style='background-color: var(--soBoldRed);'></div><input type="text" id="soBoldRed" /></div>
+<div class="box">BoldGreen<div class="boxfill" style='background-color: var(--soBoldGreen);'></div><input type="text" id="soBoldGreen" /></div>
+<div class="box">BoldYellow<div class="boxfill" style='background-color: var(--soBoldYellow);'></div><input type="text" id="soBoldYellow" /></div>
+<div class="box">BoldBlue<div class="boxfill" style='background-color: var(--soBoldBlue);'></div><input type="text" id="soBoldBlue" /></div>
+<div class="box">BoldMagenta<div class="boxfill" style='background-color: var(--soBoldMagenta);'></div><input type="text" id="soBoldMagenta" /></div>
+<div class="box">BoldCyan<div class="boxfill" style='background-color: var(--soBoldCyan);'></div><input type="text" id="soBoldCyan" /></div>
+<div class="box">BoldWhite<div class="boxfill" style='background-color: var(--soBoldWhite);'></div><input type="text" id="soBoldWhite" /></div></div>
 
 </div>
 <div>
@@ -151,14 +185,27 @@ rgbTest = getComputedStyle(element).getPropertyValue("--soBlack")
 let regexp = /.*\((.*)\)/;
 lrgb = rgbTest.replace(regexp,'$1').replaceAll(' ','')
 
-function clInit() {
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ?   
+   "rgb("+parseInt(result[1], 16)+", "+parseInt(result[2], 16)+", "+parseInt(result[3], 16)+")"
+   : hex;
+}
 
+function hexToMtt(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ?   
+   parseInt(result[1], 16)+","+parseInt(result[2], 16)+","+parseInt(result[3], 16)
+   : hex;
+}
+
+function clInit() {
  colors.forEach(function(item) {
   sColor = getComputedStyle(element).getPropertyValue("--so"+item)
   oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
   document.getElementById("so"+item).value = sColor
   document.getElementById("so"+item).setAttribute("onchange","clUpdate()")
-  document.getElementById("so"+item).setAttribute("size","17")
+  document.getElementById("so"+item).setAttribute("size","19")
   document.getElementById(item).innerHTML = item+":"+oColor
  })
 }
@@ -167,20 +214,12 @@ function clUpdate() {
  colors.forEach(function(item) {
   nColor = document.getElementById("so"+item).value
   oColor = nColor.replace(regexp,'$1').replaceAll(' ','')
+  mttColor = hexToMtt(oColor)
   element.style.setProperty('--so'+item,nColor)
-  document.getElementById(item).innerHTML = item+":"+oColor
+  document.getElementById(item).innerHTML = item+":"+mttColor
   })
  
 }
-
-function bgToggle() {
- boldWhite = getComputedStyle(element).getPropertyValue("--soBoldWhite")
- black = getComputedStyle(element).getPropertyValue("--soBlack")
- background = getComputedStyle(element).getPropertyValue("background-color")
- if (background === black) { element.style.backgroundColor = boldWhite; }
- else { element.style.backgroundColor = black; }
-}
-
 
 function bgToggle() {
 document.querySelectorAll('div').forEach(function(item) {
@@ -197,5 +236,17 @@ document.querySelectorAll('div').forEach(function(item) {
   item.style.setProperty("--soForeground","var(--soWhite)");
   }
  })
+}
+
+function clInit() {
+ colors.forEach(function(item) {
+  sColor = getComputedStyle(element).getPropertyValue("--so"+item)
+  oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
+  document.getElementById("so"+item).value = sColor
+  document.getElementById("so"+item).setAttribute("onchange","clUpdate()")
+  document.getElementById("so"+item).setAttribute("size","19")
+  document.getElementById(item).innerHTML = item+":"+oColor
+ })
+ bgToggle()
 }
 </script>
