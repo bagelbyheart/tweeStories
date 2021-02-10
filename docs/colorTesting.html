@@ -21,6 +21,7 @@
 --soBoldWhite:rgb(253, 246, 227);
 --soBackground:var(--soBlack);
 --soForeground:var(--soWhite);
+--soCursor:var(--soMagenta);
 background-color:var(--soBackground);
 background:url('http://bagelbyheart.com/CherryLow.png');
 background-size:cover;
@@ -50,7 +51,6 @@ div {
 
 input {
  font-family:monospace;
- font-size:smaller;
  color: var(--soForeground);
  background-color: var(--soBackground);
 }
@@ -67,7 +67,18 @@ input {
 .box {
  font-weight: bold;
  display: inline-block;
- width: fit-content;
+ width: 23%;
+ text-align: center;
+ border-style: solid;
+ margin: 5px 0px 5px 0px;
+ border-width: 1px;
+ padding: 5px 0px 0px 0px;
+}
+
+.mbox {
+ font-weight: bold;
+ display: inline-block;
+ width: 32%;
  text-align: center;
  border-style: solid;
  margin: 5px 0px 5px 0px;
@@ -83,6 +94,14 @@ input {
  border-width: 1px;
 }
 
+.mbox .boxfill {
+ border-radius: 0px;
+ margin:5px 0px 0px 0px;
+ height: 8em;
+ border-style: solid none solid none;
+ border-width: 1px;
+}
+
 input {
  display: block;
  width: 100%;
@@ -91,17 +110,35 @@ input {
  padding: 5px;
 }
 
+button, select {
+ border-style: none;
+ font-family:monospace;
+ color: var(--soForeground);
+ background-color: var(--soBackground);
+ width: 100%;
+ display: block;
+ padding: 5px;
+}
+
 </style>
 <body onload="clInit()">
 
-<div>
+<div class="win">
 <p>
 <span onclick="bgToggle()" class="bold">Toggle BG Color</span> |
 <span onclick="clUpdate()" class="bold">Update Colors</span> | 
 <a href="https://coolors.co/contrast-checker">Check Contrast</a>
 </p>
 </div>
-<div>
+<div class="win">
+<h2>Main Colors</h2>
+<p>You can edit this palette by changing the color values below. Each box accepts colorAPI values such as rgb(0,0,0) or #000000. Colors should update as you change the values present, but if not, click Update Colors at the top of the page.</p>
+<div class="mbox foreground">Foreground<div class="boxfill" style='background-color: var(--soForeground);'></div><select name="foreground"></select></div>
+<div class="mbox background">Background<div class="boxfill" style='background-color: var(--soBackground);'></div><select name="background"></select></div>
+<div class="mbox cursor">Cursor<div class="boxfill" style='background-color: var(--soCursor);'></div><select name="cursor"></select></div>
+
+</div>
+<div class="win">
 <h2>AnsiColor Names to Values</h2>
 <p>You can edit this palette by changing the color values below. Each box accepts colorAPI values such as rgb(0,0,0) or #000000. Colors should update as you change the values present, but if not, click Update Colors at the top of the page.</p>
 <div class="box">Black<div class="boxfill" style='background-color: var(--soBlack);'></div><input type="text" id="soBlack" /></div>
@@ -122,19 +159,19 @@ input {
 <div class="box">BoldWhite<div class="boxfill" style='background-color: var(--soBoldWhite);'></div><input type="text" id="soBoldWhite" /></div></div>
 
 </div>
-<div>
+<div class="win">
 <h2>$LS_COLORS examples</h2>
 <h3>File Types</h3>
 <p>
-<span style="color: var(--soWhite);">rs (reset to no color)</span><br />
+<span style="color: var(--soForeground);">rs (reset to no color)</span><br />
 <span style="color: var(--soBoldBlue);">di (directory)</span><br />
 <span style="color: var(--soBoldCyan);">ln (symbolic link)</span><br />
-<span style="color: var(--soWhite);">mh (multi-hardlink)</span><br />
+<span style="color: var(--soForeground);">mh (multi-hardlink)</span><br />
 <span style="color: var(--soYellow);">pi (named pipe, AKA FIFO)</span><br />
 <span style="color: var(--soBoldMagenta);">so (socket) do (door)</span><br />
 <span style="color: var(--soBoldYellow);">bd (block device) cd (character device)</span><br />
 <span style="color: var(--soBoldRed);">or (orphan symlink)</span><br />
-<span style="color: var(--soWhite);">mi (missing file)</span><br />
+<span style="color: var(--soForeground);">mi (missing file)</span><br />
 <span style="color: var(--soWhite); background: var(--soRed);">su (set-user-ID)</span><br />
 <span style="color: var(--soBlack); background: var(--soYellow);">sg (set-group-ID)</span><br />
 <span style="color: var(--soBlack); background: var(--soRed);">ca (file with capability)</span><br />
@@ -153,7 +190,7 @@ input {
 <span style="color: var(--soCyan);">*.aac *.au *.flac *.m4a *.mid *.midi *.mka *.mp3 *.mpc *.ogg *.ra *.wav *.oga *.opus *.spx *.xspf</span>
 </p>
 </div>
-<div>
+<div class="win">
 <h2>.minttyrc File</h2>
 <p>Copy and paste the text below into your ~/.minttyrc file in order to use this color theme.</p>
 <p>
@@ -173,6 +210,9 @@ input {
 <span id="BoldMagenta"></span><br />
 <span id="BoldCyan"></span><br />
 <span id="BoldWhite"></span><br />
+<span id="Foreground"></span><br />
+<span id="Background"></span><br />
+<span id="Cursor"></span><br />
 </p>
 </div>
 
@@ -180,12 +220,11 @@ input {
 <script>
 element = document.querySelector(':root')
 colors = ["Black","Red","Green","Yellow","Blue","Magenta","Cyan","White","BoldBlack","BoldRed","BoldGreen","BoldYellow","BoldBlue","BoldMagenta","BoldCyan","BoldWhite"]
-
-rgbTest = getComputedStyle(element).getPropertyValue("--soBlack")
+mains = ["Foreground","Background","Cursor"]
 
 
 let regexp = /.*\((.*)\)/;
-lrgb = rgbTest.replace(regexp,'$1').replaceAll(' ','')
+
 
 function hexToRgb(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -201,17 +240,6 @@ function hexToMtt(hex) {
    : hex;
 }
 
-function clInit() {
- colors.forEach(function(item) {
-  sColor = getComputedStyle(element).getPropertyValue("--so"+item)
-  oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
-  document.getElementById("so"+item).value = sColor
-  document.getElementById("so"+item).setAttribute("onchange","clUpdate()")
-  document.getElementById("so"+item).setAttribute("size","19")
-  document.getElementById(item).innerHTML = item+":"+oColor
- })
-}
-
 function clUpdate() {
  colors.forEach(function(item) {
   nColor = document.getElementById("so"+item).value
@@ -220,24 +248,34 @@ function clUpdate() {
   element.style.setProperty('--so'+item,nColor)
   document.getElementById(item).innerHTML = item+":"+mttColor
   })
- 
+ mains.forEach(function(item) {
+  sColor = getComputedStyle(element).getPropertyValue("--so"+item)
+  oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
+  mttColor = hexToMtt(oColor)
+  document.getElementById(item).innerHTML = item+":"+mttColor
+ })
 }
 
 function bgToggle() {
-document.querySelectorAll('div').forEach(function(item) {
+document.querySelectorAll('.win').forEach(function(item) {
  background = getComputedStyle(item).getPropertyValue('background-color')
  boldWhite = getComputedStyle(element).getPropertyValue("--soBoldWhite")
  black = getComputedStyle(element).getPropertyValue("--soBlack") 
  console.log(background+","+boldWhite+","+black)
  if (background === black) { 
+  element.style.setProperty("--soBackground","var(--soBoldWhite)")
+  element.style.setProperty("--soForeground","var(--soBlack)")
   item.style.setProperty("--soBackground","var(--soBoldWhite)")
   item.style.setProperty("--soForeground","var(--soBlack)")
   }
  else { 
+  element.style.setProperty("--soBackground","var(--soBlack)");
+  element.style.setProperty("--soForeground","var(--soWhite)");
   item.style.setProperty("--soBackground","var(--soBlack)");
   item.style.setProperty("--soForeground","var(--soWhite)");
   }
  })
+clUpdate()
 }
 
 function clInit() {
@@ -249,6 +287,10 @@ function clInit() {
   document.getElementById("so"+item).setAttribute("size","19")
   document.getElementById(item).innerHTML = item+":"+oColor
  })
- bgToggle()
+ mains.forEach(function(item) {
+  sColor = getComputedStyle(element).getPropertyValue("--so"+item)
+  oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
+  document.getElementById(item).innerHTML = item+":"+oColor
+ })
 }
 </script>
