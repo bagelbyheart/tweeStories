@@ -3,6 +3,8 @@
 <link href='https://fonts.googleapis.com/css?family=Fira Mono' rel='stylesheet'>
 <style>
 :root {
+/* Unsure where I got these solarized colors */
+/*
 --soBlack:rgb(0, 43, 54);
 --soBoldBlack:rgb(101, 123, 131);
 --soRed:rgb(220, 50, 47);
@@ -19,9 +21,27 @@
 --soBoldCyan:rgb(71, 207, 197);
 --soWhite:rgb(147, 161, 161);
 --soBoldWhite:rgb(253, 246, 227);
+*/
+/* Corrected solarized values */
+--soBoldBlack:rgb(0, 43, 54);
+--soBoldYellow:rgb(101, 123, 131);
+--soBoldCyan:rgb(147, 161, 161);
+--soBoldWhite:rgb(253, 246, 227);
+--soYellow:rgb(181, 137, 0);
+--soRed:rgb(220, 50, 47);
+--soBoldMagenta:rgb(108, 113, 196);
+--soBlue:rgb(38, 139, 210);
+--soCyan:rgb(42, 161, 152);
+--soGreen:rgb(133, 153, 0);
+--soMagenta:rgb(211, 54, 130);
+--soBoldRed:rgb(203, 75, 22);
+--soWhite:rgb(238, 232, 213);
+--soBoldBlue:rgb(131, 148, 150);
+--soBlack:rgb(7, 54, 66);
+--soBoldGreen:rgb(88, 110, 117);
 --soBackground:var(--soBlack);
 --soForeground:var(--soWhite);
---soCursor:var(--soMagenta);
+--soCursor:var(--soBoldMagenta);
 background-color:var(--soBackground);
 background:url('http://bagelbyheart.com/CherryLow.png');
 background-size:cover;
@@ -44,7 +64,7 @@ body {
 
 div {
  background-color:var(--soBackground);
- color:var(--soForeground);
+ color:var(--soForeground); 
  padding: 1em;
  margin: 1em;
 }
@@ -69,7 +89,7 @@ a {
  font-weight: bold;
  font-size: 8pt;
  display: inline-block;
- width: 12%;
+ width: 23%;
  text-align: center;
  border-style: solid;
  margin: 5px 0px 5px 0px;
@@ -91,7 +111,7 @@ a {
 .boxfill {
  border-radius: 0px;
  margin:5px 0px 0px 0px;
- height: 4em;
+ height: 7em;
  border-style: solid none solid none;
  border-width: 1px;
 }
@@ -147,7 +167,7 @@ button, select {
 <p>While Cursor color can be selected from any of the 16 ANSI colors further down, the foreground/background colors have been locked to provide consistency. These colors are based on whether you are using a Dark (White on Black) or Light (BoldBlack on BoldWhite) theme.</p>
 <div class="mbox cursor">Cursor<div class="boxfill" style='background-color: var(--soCursor);'></div>
 <select name="cursor">
-<option value="Magenta">Placeholder</option>
+<option value="BoldMagenta">Placeholder</option>
 </select></div>
 <div class="mbox foreground">Foreground<div class="boxfill" style='background-color: var(--soForeground);'></div><span class="finput" id="soForeground">&nbsp</span></div>
 <div class="mbox background">Background<div class="boxfill" style='background-color: var(--soBackground);'></div><span class="finput" id="soBackground">&nbsp</span></div>
@@ -235,7 +255,7 @@ button, select {
 <script>
 element = document.querySelector(':root')
 colors = ["Black","Red","Green","Yellow","Blue","Magenta","Cyan","White","BoldBlack","BoldRed","BoldGreen","BoldYellow","BoldBlue","BoldMagenta","BoldCyan","BoldWhite"]
-mains = ["Foreground","Background"]
+mains = ["Foreground","Background","Cursor"]
 
 let regexp = /.*\((.*)\)/;
 
@@ -290,7 +310,7 @@ function clUpdate() {
 }
 
 function bgToggle() {
-document.querySelectorAll('.win').forEach(function(item) {
+ item = document.querySelector('.win')
  background = getComputedStyle(item).getPropertyValue('background-color')
  boldWhite = getComputedStyle(item).getPropertyValue("--soBoldWhite")
  black = getComputedStyle(item).getPropertyValue("--soBlack") 
@@ -311,7 +331,6 @@ document.querySelectorAll('.win').forEach(function(item) {
   document.getElementById("soForeground").innerHTML = "White"
   document.getElementById("soBackground").innerHTML = "Black"
   }
- })
 clUpdate()
 }
 
