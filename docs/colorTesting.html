@@ -49,15 +49,16 @@ div {
  margin: 1em;
 }
 
-input {
- font-family:monospace;
- color: var(--soForeground);
- background-color: var(--soBackground);
-}
-
 .bold {
  font-weight:bold;
  font-size: larger;
+}
+
+a {
+ font-weight:bold;
+ font-size: larger;
+ color: inherit;
+ text-decoration: none;
 }
 
 .no_pad {
@@ -66,8 +67,9 @@ input {
 
 .box {
  font-weight: bold;
+ font-size: 8pt;
  display: inline-block;
- width: 23%;
+ width: 12%;
  text-align: center;
  border-style: solid;
  margin: 5px 0px 5px 0px;
@@ -89,25 +91,35 @@ input {
 .boxfill {
  border-radius: 0px;
  margin:5px 0px 0px 0px;
- height: 5em;
+ height: 4em;
  border-style: solid none solid none;
  border-width: 1px;
 }
 
 .mbox .boxfill {
- border-radius: 0px;
- margin:5px 0px 0px 0px;
  height: 8em;
- border-style: solid none solid none;
- border-width: 1px;
 }
 
 input {
+ font-family:monospace;
+ color: var(--soForeground);
+ background-color: var(--soBackground);
  display: block;
  width: 100%;
  border-style: none;
  border-width: 1px;
  padding: 5px;
+}
+
+.finput {
+ text-align: left;
+ font-family:monospace;
+ color: var(--soForeground);
+ background-color: var(--soBackground);
+ display: block;
+ border-style: none;
+ border-width: 1px;
+ padding: 6px;
 }
 
 button, select {
@@ -125,17 +137,20 @@ button, select {
 
 <div class="win">
 <p>
-<span onclick="bgToggle()" class="bold">Toggle BG Color</span> |
+<span onclick="bgToggle()" class="bold">Dark/Light Mode</span> |
 <span onclick="clUpdate()" class="bold">Update Colors</span> | 
-<a href="https://coolors.co/contrast-checker">Check Contrast</a>
+<a href="https://coolors.co/contrast-checker/">Check Contrast</a>
 </p>
 </div>
 <div class="win">
 <h2>Main Colors</h2>
-<p>You can edit this palette by changing the color values below. Each box accepts colorAPI values such as rgb(0,0,0) or #000000. Colors should update as you change the values present, but if not, click Update Colors at the top of the page.</p>
-<div class="mbox foreground">Foreground<div class="boxfill" style='background-color: var(--soForeground);'></div><select name="foreground"></select></div>
-<div class="mbox background">Background<div class="boxfill" style='background-color: var(--soBackground);'></div><select name="background"></select></div>
-<div class="mbox cursor">Cursor<div class="boxfill" style='background-color: var(--soCursor);'></div><select name="cursor"></select></div>
+<p>While Cursor color can be selected from any of the 16 ANSI colors further down, the foreground/background colors have been locked to provide consistency. These colors are based on whether you are using a Dark (White on Black) or Light (BoldBlack on BoldWhite) theme.</p>
+<div class="mbox cursor">Cursor<div class="boxfill" style='background-color: var(--soCursor);'></div>
+<select name="cursor">
+<option value="Magenta">Placeholder</option>
+</select></div>
+<div class="mbox foreground">Foreground<div class="boxfill" style='background-color: var(--soForeground);'></div><span class="finput" id="soForeground">&nbsp</span></div>
+<div class="mbox background">Background<div class="boxfill" style='background-color: var(--soBackground);'></div><span class="finput" id="soBackground">&nbsp</span></div>
 
 </div>
 <div class="win">
@@ -220,11 +235,9 @@ button, select {
 <script>
 element = document.querySelector(':root')
 colors = ["Black","Red","Green","Yellow","Blue","Magenta","Cyan","White","BoldBlack","BoldRed","BoldGreen","BoldYellow","BoldBlue","BoldMagenta","BoldCyan","BoldWhite"]
-mains = ["Foreground","Background","Cursor"]
-
+mains = ["Foreground","Background"]
 
 let regexp = /.*\((.*)\)/;
-
 
 function hexToRgb(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -233,11 +246,29 @@ function hexToRgb(hex) {
    : hex;
 }
 
+function rgbToHex(r, g, b) {
+  return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function rgbToHex(rgbStr) {
+  rStr = rgbStr.replace(regexp,'$1').replaceAll(' ','').split(',')
+  r = parseInt(rStr[0])
+  g = parseInt(rStr[1])
+  b = parseInt(rStr[2])
+  return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
 function hexToMtt(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result ?   
    parseInt(result[1], 16)+","+parseInt(result[2], 16)+","+parseInt(result[3], 16)
    : hex;
+}
+
+function cTestUpdate() {
+ cForeground = rgbToHex(getComputedStyle(element).getPropertyValue("--soForeground"))
+ cBackground = rgbToHex(getComputedStyle(element).getPropertyValue("--soBackground"))
+ document.querySelectorAll("a")[0].setAttribute("href","https://coolors.co/contrast-checker/"+cForeground+"-"+cBackground)
 }
 
 function clUpdate() {
@@ -249,36 +280,45 @@ function clUpdate() {
   document.getElementById(item).innerHTML = item+":"+mttColor
   })
  mains.forEach(function(item) {
-  sColor = getComputedStyle(element).getPropertyValue("--so"+item)
+  iSpan = document.getElementById(item)
+  sColor = getComputedStyle(iSpan).getPropertyValue("--so"+item)
   oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
   mttColor = hexToMtt(oColor)
-  document.getElementById(item).innerHTML = item+":"+mttColor
+  iSpan.innerHTML = item+":"+mttColor
  })
+ cTestUpdate()
 }
 
 function bgToggle() {
 document.querySelectorAll('.win').forEach(function(item) {
  background = getComputedStyle(item).getPropertyValue('background-color')
- boldWhite = getComputedStyle(element).getPropertyValue("--soBoldWhite")
- black = getComputedStyle(element).getPropertyValue("--soBlack") 
+ boldWhite = getComputedStyle(item).getPropertyValue("--soBoldWhite")
+ black = getComputedStyle(item).getPropertyValue("--soBlack") 
  console.log(background+","+boldWhite+","+black)
  if (background === black) { 
+  /*item.style.setProperty("--soBackground","var(--soBoldWhite)")
+  item.style.setProperty("--soForeground","var(--soBlack)")*/
   element.style.setProperty("--soBackground","var(--soBoldWhite)")
-  element.style.setProperty("--soForeground","var(--soBlack)")
-  item.style.setProperty("--soBackground","var(--soBoldWhite)")
-  item.style.setProperty("--soForeground","var(--soBlack)")
+  element.style.setProperty("--soForeground","var(--soBoldBlack)")
+  document.getElementById("soForeground").innerHTML = "BoldBlack"
+  document.getElementById("soBackground").innerHTML = "BoldWhite"
   }
  else { 
+  /*item.style.setProperty("--soBackground","var(--soBlack)");
+  item.style.setProperty("--soForeground","var(--soWhite)");*/
   element.style.setProperty("--soBackground","var(--soBlack)");
   element.style.setProperty("--soForeground","var(--soWhite)");
-  item.style.setProperty("--soBackground","var(--soBlack)");
-  item.style.setProperty("--soForeground","var(--soWhite)");
+  document.getElementById("soForeground").innerHTML = "White"
+  document.getElementById("soBackground").innerHTML = "Black"
   }
  })
 clUpdate()
 }
 
 function clInit() {
+ document.getElementById("soForeground").innerHTML = "White"
+ document.getElementById("soBackground").innerHTML = "Black"
+ document.getElementById("soCursor")
  colors.forEach(function(item) {
   sColor = getComputedStyle(element).getPropertyValue("--so"+item)
   oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
@@ -292,5 +332,6 @@ function clInit() {
   oColor = sColor.replace(regexp,'$1').replaceAll(' ','')
   document.getElementById(item).innerHTML = item+":"+oColor
  })
+ cTestUpdate()
 }
 </script>
